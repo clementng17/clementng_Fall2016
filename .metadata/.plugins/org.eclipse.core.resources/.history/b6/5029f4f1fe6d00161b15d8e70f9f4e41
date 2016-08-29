@@ -1,0 +1,10 @@
+
+public class Pikachu {
+	public static void main(String[]args){
+		system.out.println("Pikchu welcomes you the the world of Pokemon!");
+		system.out.println("\t\t\t(\\__/)");
+		system.out.println("\t\t\t(o^.^)");
+		system.out.println("\t\t\tz(_(\")(\")");
+	}
+
+}
