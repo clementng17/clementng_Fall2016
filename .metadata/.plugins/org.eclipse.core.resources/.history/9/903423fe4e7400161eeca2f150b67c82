@@ -1,11 +1,10 @@
 
 public class Calculate {
-	public static int square(int number){
+	public static double square(double number){
 		return(number*number);
-	
+
 	}
-	
-	public static int cube(int number){
+	public static double cube(double number){
 		return(number*number*number);
 	}
 	
@@ -23,7 +22,7 @@ public class Calculate {
 	
 	public static double toRadians(double number){
 		return(number*3.14159/360);
-	}
+	
 	public static double discriminant(double number1, double number2, double number3){
 		return((number2*number2)-4*number1*number2);
 	}
@@ -59,42 +58,4 @@ public class Calculate {
 	}
 		return()
 	
-	public static double absValue(double a){
-		if (a>0){
-			return(a);
-		}
-		else return(a*-1);
-	}
-		
-	public static int max(int a, int b){
-		if (a>b){
-			return(a);
-		}
-		else return(b);
-	}
-	
-	public static double max(double a, double b, double c){
-		if (a>b a>c){
-			return(a);
-		}
-		if (b>a b>c){
-			return(b);
-		}
-		else return(c);
-	}
-	
-	public static int min(int a, int b){
-		if (a<b){
-			return(a);
-		}
-		else return(b);
-	}
-	
-	public static double round2(double a){
-		return(a*100/100.0);
-	}
-	
-	public static double exponent(double base, int power){
-		for()
-		return()
-	}
+	public static double absValue()
