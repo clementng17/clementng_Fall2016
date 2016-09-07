@@ -95,8 +95,6 @@ public class Calculate {
 	}
 	
 	public static double exponent(double base, int power){
-		double answer= 1;
-		answer= answer*base;
-		for(int i=1; i<=power)
-		
+		for()
+		return()
 	}
