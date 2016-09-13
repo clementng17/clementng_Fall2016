@@ -2,14 +2,12 @@
 public class Calculate {
 	public static int square(int number){
 		return(number*number);
-	
 	}
 	
 	public static int cube(int number){
 		return(number*number*number);
 	}
-}
-	/*
+
 	public static double average(double number1, double number2){
 		return((number1+number2)/2);
 	}
@@ -36,7 +34,7 @@ public class Calculate {
 	}
 	
 	public static double toMixedNum(double number1, double number2){
-		return(number1/number2+ "hello"+)
+		return(number1/number2+ "_" + number1-number2 + "/" +number2);
 	}
 	
 	public static double foil(double number1, double number2, double number3, double number4, double n){
@@ -54,11 +52,7 @@ public class Calculate {
 		return false;
 		}
 	}
-	}
-}
-	}
-		return()
-	
+
 	public static double absValue(double a){
 		if (a>0){
 			return(a);
@@ -102,11 +96,24 @@ public class Calculate {
 		}
 	}
 	
-	public static int factorial(int a){
-		for(int i; i++){
-			for(int j; i==j j--){
-				System.out.println(i*i);
+	public static int factorial(int n){
+		int product=1;
+			for(int i=2; i<=n; i++){
+				product= product*i;
 			}
-		}
+			return product;
+			for (int i=0; i>=0; i++) {
+				System.out.println( i + "!=" + factorial(i));
+			}
 	}
-/*
+	public static boolean isPrime(int a){
+		if (a>=2 && a%1==0){
+			return true;
+		}
+		else return -1;
+		}
+	
+	public static int gcf(int a, int b){
+		
+	}
+}
