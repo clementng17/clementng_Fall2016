@@ -33,12 +33,12 @@ public class Calculate {
 		return numerator;
 	}
 	
-	public static String toMixedNum(int number1, int number2){
-		return(number1/number2+ "_" + (number1%number2)-number2 + "/" +number2);
+	public static double toMixedNum(double number1, double number2){
+		return(number1/number2+ "_" + number1-number2 + "/" +number2);
 	}
 	
-	public static String foil(int number1, int number2, int number3, int number4, int n){
-		return(number1*number3 + "n^2"+ number1*number4+number2*number3 +"n" +number2*number4);
+	public static double foil(double number1, double number2, double number3, double number4, double n){
+		return(number1*number3*n*n+number1*number4*n+number2*number3*n+number2*number4);
 	}
 	
 	public static boolean isDivisibleBy(int a, int b){
@@ -91,7 +91,7 @@ public class Calculate {
 	public static double exponent(double base, int power){
 		double answer= 1;
 		answer= answer*base;
-		for(int i=1; i<=power; i++){
+		for(int i=1; i<=power){
 			return answer;
 		}
 	}
@@ -110,24 +110,10 @@ public class Calculate {
 		if (a>=2 && a%1==0){
 			return true;
 		}
-		else return false;
+		else return -1;
 		}
 	
 	public static int gcf(int a, int b){
-		if (a==0 && b==0){
-			return a+b;
-		}
-		if (a%b==0){
-			return b;
-		}
-		if (b%a==0){
-			return a;
-		}
+		
 	}
-	
-	public static double sqrt(double a){
-		if (a>=0){
-			return 
-		}
-			
-	}
+}
