@@ -131,3 +131,7 @@ public class Calculate {
 		}
 			
 	}
+	
+	public static String quadForm(int a, int b, int c){
+		return(-b + sqrt(discriminant()))
+	}
