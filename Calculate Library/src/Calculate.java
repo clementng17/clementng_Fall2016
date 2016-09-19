@@ -114,24 +114,33 @@ public class Calculate {
 		}
 	
 	public static int gcf(int a, int b){
+		while(a>=2)
 		if (a==0 && b==0){
 			return a+b;
 		}
-		if (a%b==0){
-			return b;
-		}
-		if (b%a==0){
-			return a;
+		else{
+			int smallnumber= Calculate.min(a, b);
+			int bignumber= Calculate.max(a, b);
+					
+		if Calculate.isDivisbleBy(bignumber, smallnumber){
+			return answer; 
+		}else{ 
+		
+		
+		
 		}
 	}
 	
 	public static double sqrt(double a){
 		if (a>=0){
-			return 
+			return (Math.sqrt(a));
 		}
-			
+		else return -1.0;	
 	}
-	
+	/*
 	public static String quadForm(int a, int b, int c){
-		return(-b + sqrt(discriminant()))
+		return((-b + sqrt(discriminant(int a, int b, int c))/2);
+		return((-b - sqrt(discriminant(int a, int b, int c))/2);
 	}
+*/
+}
