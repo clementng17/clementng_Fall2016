@@ -34,7 +34,9 @@ public class Calculate {
 	}
 	
 	public static String toMixedNum(int number1, int number2){
-		return(number1/number2+ "_" + (number1%number2)-number2 + "/" +number2);
+		int wholenumber= number1/number2;
+		int numerator=(number1%number2)- number2;
+		return(wholenumber + "_" + numerator + "/" +number2);
 	}
 	
 	public static String foil(int number1, int number2, int number3, int number4, int n){
@@ -89,10 +91,8 @@ public class Calculate {
 	}
 	
 	public static double exponent(double base, int power){
-		double answer= 1;
-		answer= answer*base;
-		for(int i=1; i<=power; i++){
-			return answer;
+		for(int i=power; i>0; i++){
+			return base*base;
 		}
 	}
 	
@@ -102,33 +102,39 @@ public class Calculate {
 				product= product*i;
 			}
 			return product;
-			for (int i=0; i>=0; i++) {
+			for (int i=0; i>=0; i++){
 				System.out.println( i + "!=" + factorial(i));
 			}
 	}
 	public static boolean isPrime(int a){
-		if (a>=2 && a%1==0){
+		if (a<2){
+			return false;
+		}
+		if (a==2){
 			return true;
 		}
-		else return false;
+		for (int i=3;i<a; i++){
+			if (Calculate.isDivisibleBy(a, i)){
+				return false;
+			}
 		}
-	
+		return true;
+	}
 	public static int gcf(int a, int b){
-		while(a>=2)
-		if (a==0 && b==0){
-			return a+b;
-		}
-		else{
-			int smallnumber= Calculate.min(a, b);
-			int bignumber= Calculate.max(a, b);
-					
-		if Calculate.isDivisbleBy(bignumber, smallnumber){
-			return answer; 
-		}else{ 
-		
-		
-		
-		}
+		int smallnumber= Calculate.min(a, b);
+		int bignumber= Calculate.max(a, b);
+		int possiblefactor= smallnumber;
+		while(possiblefactor>=2)
+		{
+			if (a==0 && b==0){
+				return 0;
+			}
+			if Calculate.isDivisbleBy(smallnumber, possiblefactor){
+				if Calculate.isDivisibleBy(bignumber, possiblefactor){
+					return possiblefactor; 
+			}
+			possiblefactor--;
+			}
 	}
 	
 	public static double sqrt(double a){
