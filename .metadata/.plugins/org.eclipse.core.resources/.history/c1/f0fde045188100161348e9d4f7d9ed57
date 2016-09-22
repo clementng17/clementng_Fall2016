@@ -44,10 +44,6 @@ public class Calculate {
 	}
 	
 	public static boolean isDivisibleBy(int a, int b){
-		if(b==0 || a==0){
-			throw new IllegalArgumentException();
-		}
-	
 		int number1 = (a/b);
 		int number2 = (b/a);
 		int newnumber = (number1+number2);
@@ -66,14 +62,14 @@ public class Calculate {
 		else return(a*-1);
 	}
 		
-	public static int max1(int a, int b){
+	public static int max(int a, int b){
 		if (a>b){
 			return(a);
 		}
 		else return(b);
 	}
 	
-	public static double max2(double a, double b, double c){
+	public static double max(double a, double b, double c){
 		if (a>b && a>c){
 			return(a);
 		}
@@ -91,34 +87,25 @@ public class Calculate {
 	}
 	
 	public static double round2(double a){
-		return (a*100.0/100.0);
+		return(a*100/100.0);
 	}
 	
 	public static double exponent(double base, int power){
-		if (base<0){
-			throw new IllegalArgumentException();
-	}
-		if (power<0){
-			throw new IllegalArgumentException();
+		for(int i=power; i>0; i++){
+			return base*base;
 		}
-		int result=1;
-		for(int i=power; i>0; i--){
-			result*=base;
-		}
-		return result;
 	}
 	
 	public static int factorial(int n){
-		if (n<=0){
-			throw new IllegalArgumentException();
-		}
 		int product=1;
 			for(int i=2; i<=n; i++){
 				product= product*i;
 			}
 			return product;
-}
-
+			for (int i=0; i>=0; i++){
+				System.out.println( i + "!=" + factorial(i));
+			}
+	}
 	public static boolean isPrime(int a){
 		if (a<2){
 			return false;
@@ -133,47 +120,33 @@ public class Calculate {
 		}
 		return true;
 	}
-	
-	public static int gcf(int a,int b){
+	public static int gcf(int a, int b){
 		int smallnumber= Calculate.min(a, b);
-		int bignumber= Calculate.max1(a, b);
-		int possiblefactor = smallnumber;
+		int bignumber= Calculate.max(a, b);
+		int possiblefactor= smallnumber;
 		while(possiblefactor>=2)
 		{
 			if (a==0 && b==0){
 				return 0;
 			}
-			if (Calculate.isDivisibleBy(smallnumber, possiblefactor)){
-				if (Calculate.isDivisibleBy(bignumber, possiblefactor)){
+			if Calculate.isDivisbleBy(smallnumber, possiblefactor){
+				if Calculate.isDivisibleBy(bignumber, possiblefactor){
 					return possiblefactor; 
-				}
 			}
-			possiblefactor--;	
-		}
-		return -1;
+			possiblefactor--;
+			}
 	}
 	
 	public static double sqrt(double a){
-		if(a<0){
-			throw new IllegalArgumentException();
-		}
 		if (a>=0){
 			return (Math.sqrt(a));
 		}
 		else return -1.0;	
 	}
-
+	/*
 	public static String quadForm(int a, int b, int c){
-		if (sqrt(square(b)+ 4*a*c)<0){
-			return "no real roots";
-		}
-		double root1= (-b + sqrt(discriminant(a, b, c))/2);
-		double root2= (-b - sqrt(discriminant(a,b,c))/2);
-		if (sqrt(square(b) + 4*a*c)>0){
-			double newroot1= root1*100/100.0;
-			double newroot2= root2*100/100.0;
-		return (newroot1 + "and" + newroot2);
+		return((-b + sqrt(discriminant(int a, int b, int c))/2);
+		return((-b - sqrt(discriminant(int a, int b, int c))/2);
 	}
-	return ("-1");
-	}
+*/
 }
