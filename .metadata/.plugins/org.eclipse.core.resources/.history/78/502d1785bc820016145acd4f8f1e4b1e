@@ -24,7 +24,7 @@ public class Calculate {
 		return(number*3.14159/360);
 	}
 	public static double discriminant(double number1, double number2, double number3){
-		return((number2*number2)-4*number1*number3);
+		return((number2*number2)-4*number1*number2);
 	}
 	
 	public static int toImproperFrac(int a, int b, int c){
@@ -45,13 +45,14 @@ public class Calculate {
 	
 	public static boolean isDivisibleBy(int a, int b){
 		if(b==0 || a==0){
-			throw new IllegalArgumentException("output is undefined or 0");
+			throw new IllegalArgumentException();
 		}
 	
-		int number1 = (a%b);
-		int number2 = (b%a);
+		int number1 = (a/b);
+		int number2 = (b/a);
+		int newnumber = (number1+number2);
 		
-	if(number1 == 0 || number2==0){
+	if(newnumber == 0){
 		return true;
 	}else{
 		return false;
@@ -59,9 +60,6 @@ public class Calculate {
 	}
 
 	public static double absValue(double a){
-		if (a==0){
-			return 0;		
-		}
 		if (a>0){
 			return(a);
 		}
@@ -69,9 +67,6 @@ public class Calculate {
 	}
 		
 	public static int max1(int a, int b){
-		if (a==b){
-		throw new IllegalArgumentException("numbers are equal");
-		}
 		if (a>b){
 			return(a);
 		}
@@ -89,16 +84,10 @@ public class Calculate {
 	}
 	
 	public static int min(int a, int b){
-		if (a==b){
-			throw new IllegalArgumentException("numbers are equal");
-		}
 		if (a<b){
 			return(a);
 		}
-		if (a>b){
-			return(b);
-		}
-		else return -1;
+		else return(b);
 	}
 	
 	public static double round2(double a){
@@ -107,10 +96,10 @@ public class Calculate {
 	
 	public static double exponent(double base, int power){
 		if (base<0){
-			throw new IllegalArgumentException("base is a negative number");
+			throw new IllegalArgumentException();
 	}
 		if (power<0){
-			throw new IllegalArgumentException("base is a negative number");
+			throw new IllegalArgumentException();
 		}
 		int result=1;
 		for(int i=power; i>0; i--){
@@ -121,7 +110,7 @@ public class Calculate {
 	
 	public static int factorial(int n){
 		if (n<=0){
-			throw new IllegalArgumentException("number is negative or 0");
+			throw new IllegalArgumentException();
 		}
 		int product=1;
 			for(int i=2; i<=n; i++){
@@ -175,15 +164,15 @@ public class Calculate {
 	}
 
 	public static String quadForm(int a, int b, int c){
-		if (square(b)- 4*a*c<0){
+		if (square(b)+ 4*a*c<0){
 			return "no real roots";
 		}
-		double root1= ((-b + sqrt(discriminant(a, b, c)))/2);
-		double root2= ((-b - sqrt(discriminant(a,b,c)))/2);
-		if (sqrt(square(b) + 4*a*c)>=0){
+		double root1= (-b + sqrt(discriminant(a, b, c))/2);
+		double root2= (-b - sqrt(discriminant(a,b,c))/2);
+		if (sqrt(square(b) + 4*a*c)>0){
 			double newroot1= root1*100/100.0;
 			double newroot2= root2*100/100.0;
-		return (newroot1 + "and" + " "+ newroot2);
+		return (newroot1 + "and" + newroot2);
 	}
 	return ("-1");
 	}
