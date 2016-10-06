@@ -50,6 +50,7 @@ public class Calculate {
 	
 	public static String foil(int number1, int number2, int number3, int number4, int n){
 		return(number1*number3 + "n^2"+ number1*number4+number2*number3 +"n" +number2*number4);
+		// takes in 4 numbers and a variable and returns a quadratic equation in standard form
 	}
 	
 	public static boolean isDivisibleBy(int a, int b){
@@ -65,6 +66,7 @@ public class Calculate {
 	}else{
 		return false;
 		}
+	// takes in two integers and returns a boolean to see if the two numbers are divisible by another
 	}
 
 	public static double absValue(double a){
@@ -75,6 +77,7 @@ public class Calculate {
 			return(a);
 		}
 		else return(a*-1);
+		// takes in a double and returns its absolute value 
 	}
 		
 	public static int max1(int a, int b){
@@ -85,6 +88,7 @@ public class Calculate {
 			return(a);
 		}
 		else return(b);
+		// takes in two integers and returns the maximum of the two integers
 	}
 	
 	public static double max2(double a, double b, double c){
@@ -95,6 +99,7 @@ public class Calculate {
 			return(b);
 		}
 		else return(c);
+		// takes in 3 doubles and returns the maximum of the 3 doubles 
 	}
 	
 	public static int min(int a, int b){
@@ -108,10 +113,12 @@ public class Calculate {
 			return(b);
 		}
 		else return -1;
+		// takes in 2 integers and returns the minimum of the 2 integers 
 	}
 	
 	public static double round2(double a){
 		return (a*100.0/100.0);
+		// takes in a double and returns it to the nearest tenth decimal place
 	}
 	
 	public static double exponent(double base, int power){
@@ -125,7 +132,8 @@ public class Calculate {
 		for(int i=power; i>0; i--){
 			result*=base;
 		}
-		return result;
+		return result; 
+		// takes in a double as the base and an integer as the power; raises the base to that power and returns the result
 	}
 	
 	public static int factorial(int n){
@@ -137,7 +145,8 @@ public class Calculate {
 				product= product*i;
 			}
 			return product;
-}
+			// takes in an integer and finds the factorial of that integer  
+	}
 
 	public static boolean isPrime(int a){
 		if (a<2){
@@ -152,6 +161,7 @@ public class Calculate {
 			}
 		}
 		return true;
+		// takes in an integer and returns a boolean to see if the integer is a prime number or not
 	}
 	
 	public static int gcf(int a,int b){
@@ -171,6 +181,7 @@ public class Calculate {
 			possiblefactor--;	
 		}
 		return -1;
+		// returns the greatest common factor of the two accepted integers 
 	}
 	
 	public static double sqrt(double a){
@@ -181,6 +192,7 @@ public class Calculate {
 			return (Math.sqrt(a));
 		}
 		else return -1.0;	
+		// takes in a double and returns the squareroot of that double
 	}
 
 	public static String quadForm(int a, int b, int c){
@@ -195,5 +207,6 @@ public class Calculate {
 		return (newroot1 + "and" + " "+ newroot2);
 	}
 	return ("-1");
+	// takes in 3 integers, which are the coefficients of a standard form quadratic equation and returns its zeroes 
 	}
 }
