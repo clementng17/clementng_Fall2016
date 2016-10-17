@@ -7,7 +7,10 @@ public class StringExplorer {
 		// Demonstrate the indexOf method.
 		int position = sample.indexOf("quick");
 		System.out.println("sample.indexOf(\"quick\") = " + position);
-
+		int notFoundPsn= sample.indexOf("slow");
+		System.out.println("sample.indexOf(\"slow\")=" + notFoundPsn);
+		//indexOf(String str, int fromIndex) is different because it takes in two things: a string and an integer 
+		
 		// Demonstrate the toLowerCase method.
 		String lowerCase = sample.toLowerCase();
 		System.out.println("sample.toLowerCase() = " + lowerCase);

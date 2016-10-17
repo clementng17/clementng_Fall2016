@@ -23,6 +23,8 @@ public class Magpie2 {
 		} else if (statement.indexOf("dreyer") >=0 
 				|| statement.indexOf("lamont") >=0) {
 			response = "He or she is a good teacher.";
+		} else if (statement.trim().length() == 0) {
+			response = "Say something, please.";
 		}else {
 		
 			response = getRandomResponse();
