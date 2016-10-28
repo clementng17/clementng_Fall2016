@@ -21,12 +21,12 @@ public class Calculate {
 	}
 	
 	public static double toDegrees(double number){
-		return(number*360/3.14159);
+		return(number*180/3.14159);
 		//converts radians to degrees
 	}
 	
 	public static double toRadians(double number){
-		return(number*3.14159/360);
+		return(number*3.14159/180);
 		//converts degrees to radians 
 	}
 	public static double discriminant(double number1, double number2, double number3){ 
@@ -43,7 +43,7 @@ public class Calculate {
 	
 	public static String toMixedNum(int number1, int number2){
 		int wholenumber= number1/number2;
-		int numerator=(number1%number2)- number2;
+		int numerator=(number1%number2);
 		return(wholenumber + "_" + numerator + "/" +number2);
 		// finds the mixed number
 	}
@@ -117,7 +117,7 @@ public class Calculate {
 	}
 	
 	public static double round2(double a){
-		return (a*100.0/100.0);
+		return (a*100.00/100.00);
 		// takes in a double and returns it to the nearest tenth decimal place
 	}
 	
@@ -192,7 +192,7 @@ public class Calculate {
 			return (Math.sqrt(a));
 		}
 		else return -1.0;	
-		// takes in a double and returns the squareroot of that double
+		// takes in a double and returns the square root of that double
 	}
 
 	public static String quadForm(int a, int b, int c){
@@ -206,6 +206,10 @@ public class Calculate {
 			double newroot2= root2*100/100.0;
 		return (newroot1 + "and" + " "+ newroot2);
 	}
+		if (square(b) + 4*a*c==0){
+			double root= -b/a;
+			return root;
+		}
 	return ("-1");
 	// takes in 3 integers, which are the coefficients of a standard form quadratic equation and returns its zeroes 
 	}
