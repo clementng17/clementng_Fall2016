@@ -43,13 +43,13 @@ public class Split
 				String separate = "bread";
 				String[ ] toppintgs =recipe.split("bread");
 				if (Arrays.toString(toppings) == "[]" || Arrays.toStiring(toppings) == "[ ]"){
-					System.out.println("Toppings not surrounded by bread.");
+					System.out.println("There is no sandwich");
 				}
 				else if (toppings.length>2{
 					for (int i =0; i <y.length-2; i++){
 						inside =toppings[i+1].split(" ");
 						if (Arrays.toString(toppings)== "[]"){
-							System.out.print("Toppings not surrounded by bread.");
+							System.out.print("There is no sandwich.");
 						}
 						else { System.out.println(Arrays.toString(toppings));
 		
