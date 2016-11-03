@@ -54,7 +54,7 @@ public class ArraysLab3
 		Arrays.copyOfRange(original, 0, idx);
 		for (int i=0; i<= newArr.length-1; i++){
 			newArr[i]= arr[i];
-			newArr[idx]
+			newArr[idx];
 	}
 	
 	/*
