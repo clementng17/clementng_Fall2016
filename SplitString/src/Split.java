@@ -42,12 +42,13 @@ public class Split
 			public static void Bread2(String recipe){
 				String separate = "bread";
 				String[ ] toppintgs =recipe.split("bread");
-				if (Arrays.toString(toppings) == "[]" || Arrays.toStiring(toppings) == "[ ]"){
+				String ingredients = "null";
+				if (toppings.length<0){
 					System.out.println("Toppings not surrounded by bread.");
 				}
-				else if (toppings.length>2{
-					for (int i =0; i <y.length-2; i++){
-						inside =toppings[i+1].split(" ");
+				else if (toppings.length>2){
+					for (int i =0; i <toppings.length-2; i++){
+						ingredients =toppings[i+1].split(" ");
 						if (Arrays.toString(toppings)== "[]"){
 							System.out.print("Toppings not surrounded by bread.");
 						}
