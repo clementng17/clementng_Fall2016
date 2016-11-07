@@ -1,12 +1,13 @@
 
-
-package arrays_materials;
-
 import java.util.Arrays;
 
 public class ArraysLab3 
 {
 	/*
+	 * package arrays_materials;
+
+
+import java.util.Arrays;
 	 * Write a method named sum that accepts two arrays of integers arr1 and arr2 
 	 * and returns an array of integers, 
 	 * in which every element is the sum of the elements at that index for the arrays arr1 and arr2. 
@@ -17,11 +18,11 @@ public class ArraysLab3
 		assert (arr1.length > 0);
 		assert (arr2.length > 0);
 		assert (arr1.length == arr2.length);
-		int [] newArr = new int[arr1.length ];
+		int [] newArr = new int[arr1.length];
 		for (int i=0; i <= arr1.length-1; i++ ){
 			newArr[i]= arr1[i] + arr2[i];
 		}
-		System.out.println(Arrays.toString(newArr));
+		return newArr;
 		
 	}
 	
@@ -35,10 +36,11 @@ public class ArraysLab3
 	{
 		assert (arr.length > 0);
 		int [] newArr= new int [arr.length + 1];
-		for (int i=0; i<= newArr.length-1; i++){
+		for (int i=0; i<= newArr.length-2; i++){
 			newArr[i]= arr[i];
 			newArr[newArr.length-1]=  num;
 		}
+		return newArr;
 	}
 	
 	/*
@@ -46,17 +48,21 @@ public class ArraysLab3
 	 * and returns an array of integers consisting of all of the elements of arr 
 	 * except for the element at index idx (thus, the returned array has a length of arr.length ñ 1).  
 	 * You can assume arr has at least two elements.
+	 * 		Arrays.copyOfRange(original, 0, idx);
 	 */
 	public static int[] remove(int[] arr, int idx)
 	{
 		assert (arr.length >= 2);
 		int [] newArr= new int [arr.length -1];
-		Arrays.copyOfRange(original, 0, idx);
-		for (int i=0; i<= newArr.length-1; i++){
+
+		for (int i=0; i< idx; i++){
 			newArr[i]= arr[i];
-			newArr[idx]
 	}
-	
+		for (int i= idx; i <=newArr.length-1; i++){
+			newArr[i]= arr[i+1];
+		}
+		return newArr;
+	}
 	/*
 	 * Write a method sumEven that accepts an array of integers arr 
 	 * and returns an integer containing the sum of the elements at the even indices of arr.  
@@ -65,8 +71,11 @@ public class ArraysLab3
 	public static int sumEven(int[] arr)
 	{
 		assert (arr.length > 0);
-
-		
+		int sum= 0;
+		for (int i= 0; i <=arr.length-1; i+=2){
+			sum += arr[i];
+	}
+		return sum;
 	}
 	
 	/*
@@ -79,7 +88,10 @@ public class ArraysLab3
 	public static void rotateRight(int[] arr)
 	{
 		assert (arr.length > 0);
-		
+		for (int i=0; i<= arr.length-2; i++){
+			arr[i]= arr[i+1];
+			arr[arr.length-1]= arr[0];
+		}
 	}
 
 	/*
@@ -107,6 +119,20 @@ public class ArraysLab3
 	
 	public static void main(String[] args) 
 	{
+		int [] a1 = {5, 10, 15, 20, 25, 30, 35, 40};
+		int [] a2 = {7, 14, 21, 28, 35, 42, 49, 56};
+		int [] sumArr = sum(a1, a2);
+		int appendNum= 200;
+		int [] appendArr = append(a1, appendNum);
+		int removeIdx = 5; 
+		int [] removeArr = remove(a2, removeIdx);
+		int sumOfEvens = sumEven(appendArr);
+		rotateRight(a1);
 		
+		System.out.println(Arrays.toString(sumArr));
+		System.out.println(Arrays.toString(appendArr));
+		System.out.println(Arrays.toString(removeArr));
+		System.out.println(sumOfEvens);
+		System.out.println(Arrays.toString(a1));
 	}
 }
