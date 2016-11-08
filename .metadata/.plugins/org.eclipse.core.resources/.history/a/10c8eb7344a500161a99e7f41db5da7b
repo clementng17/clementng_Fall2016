@@ -29,7 +29,6 @@ public class Calculate {
 		return(number*3.14159/180);
 		//converts degrees to radians 
 	}
-	
 	public static double discriminant(double number1, double number2, double number3){ 
 		return((number2*number2)-4*number1*number3);
 		//finds the discriminant from the coefficients a, b, and c of an equation
@@ -186,11 +185,9 @@ public class Calculate {
 	}
 	
 	public static double sqrt(double a){
-		
 		if(a<0){
 			throw new IllegalArgumentException();
 		}
-		
 		if (a>=0){
 			return (Math.sqrt(a));
 		}
@@ -202,19 +199,18 @@ public class Calculate {
 		if (square(b)- 4*a*c<0){
 			return "no real roots";
 		}
-		double root1= ((-b + sqrt(discriminant(a, b, c)))/(2*a));
-		double root2= ((-b - sqrt(discriminant(a, b, c)))/(2*a));
-		if (square(b) - 4*a*c==0){
-			
-			return ("The root is " + root1);
-		}
+		double root1= ((-b + sqrt(discriminant(a, b, c)))/2);
+		double root2= ((-b - sqrt(discriminant(a,b,c)))/2);
 		if (sqrt(square(b) + 4*a*c)>=0){
 			double newroot1= root1*100/100.0;
 			double newroot2= root2*100/100.0;
-		return (newroot1 + "and "+ newroot2);
+		return (newroot1 + "and" + " "+ newroot2);
 	}
-		
-	return ("Error");
+		if (square(b) + 4*a*c==0){
+			double root= -b/a;
+			return ("The root is " + root);
+		}
+	return ("-1");
 	// takes in 3 integers, which are the coefficients of a standard form quadratic equation and returns its zeroes 
 	}
 }

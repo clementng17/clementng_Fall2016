@@ -202,8 +202,8 @@ public class Calculate {
 		if (square(b)- 4*a*c<0){
 			return "no real roots";
 		}
-		double root1= ((-b + sqrt(discriminant(a, b, c)))/(2*a));
-		double root2= ((-b - sqrt(discriminant(a, b, c)))/(2*a));
+		double root1= ((-b + sqrt(discriminant(a, b, c)))/(2a));
+		double root2= ((-b - sqrt(discriminant(a, b, c)))/(2a));
 		if (square(b) - 4*a*c==0){
 			
 			return ("The root is " + root1);

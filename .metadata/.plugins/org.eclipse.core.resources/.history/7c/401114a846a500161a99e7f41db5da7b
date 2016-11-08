@@ -29,7 +29,6 @@ public class Calculate {
 		return(number*3.14159/180);
 		//converts degrees to radians 
 	}
-	
 	public static double discriminant(double number1, double number2, double number3){ 
 		return((number2*number2)-4*number1*number3);
 		//finds the discriminant from the coefficients a, b, and c of an equation
@@ -202,8 +201,8 @@ public class Calculate {
 		if (square(b)- 4*a*c<0){
 			return "no real roots";
 		}
-		double root1= ((-b + sqrt(discriminant(a, b, c)))/(2*a));
-		double root2= ((-b - sqrt(discriminant(a, b, c)))/(2*a));
+		double root1= ((-b + sqrt(discriminant(a, b, c)))/2);
+		double root2= ((-b - sqrt(discriminant(a, b, c)))/2);
 		if (square(b) - 4*a*c==0){
 			
 			return ("The root is " + root1);
