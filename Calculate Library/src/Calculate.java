@@ -117,7 +117,14 @@ public class Calculate {
 		// takes in 2 integers and returns the minimum of the 2 integers 
 	}
 	
-	public static double round2(double a){
+	public static double round2(double input){
+		double result = 0;
+		if (input>0){
+			result = input*100.0+.5;
+		}
+		else { 
+			result = input*100.0-.5;
+		}
 		return (a*100.00/100.00);
 		// takes in a double and returns it to the nearest tenth decimal place
 	}
