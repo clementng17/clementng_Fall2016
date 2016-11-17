@@ -125,7 +125,7 @@ public class Calculate {
 		else { 
 			result = input*100.0-.5;
 		}
-		return (input*100.00/100.00);
+		return (a*100.00/100.00);
 		// takes in a double and returns it to the nearest tenth decimal place
 	}
 	
@@ -134,10 +134,10 @@ public class Calculate {
 			throw new IllegalArgumentException("base is a negative number");
 	}
 		if (power<0){
-			throw new IllegalArgumentException("exponent is a negative number");
+			throw new IllegalArgumentException("base is a negative number");
 		}
 		int result=1;
-		for(int i=power; i>=0; i--){
+		for(int i=power; i>0; i--){
 			result*=base;
 		}
 		return result; 
