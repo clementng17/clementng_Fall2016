@@ -21,9 +21,20 @@ public class FracCalc {
     public static String produceAnswer(String input)
     { 
         // TODO: Implement this function to produce the solution to the input
-
-        return "";
-    }
+		String space = " ";
+		String[] inputArray= input.split(space);
+    	String separate = "+";
+    	String[] operands = input.split(separate);
+    	if (inputArray =! operands ){
+		String operand1 = operands [0]; 
+		String operand2 = operands [1];
+        return "operand 1= " + operand1;
+        return "operand 2= " + operand2;
+    	}
+    	if (inputArray == operands){
+    		String subtractSign = "-";
+    		
+    	}
 
     // TODO: Fill in the space below with any helper methods that you think you will need
     
