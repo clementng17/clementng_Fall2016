@@ -35,10 +35,10 @@ public class Calculate {
 		//finds the discriminant from the coefficients a, b, and c of an equation
 	}
 	
-	public static int toImproperFrac(int a, int b, int c){
+	public static String toImproperFrac(int a, int b, int c){
 		int numerator=((a*b)-c);
-		System.out.println(numerator+"/"+c );
-		return numerator;
+		String ImproperFrac= (numerator+"/"+c );
+		return ImproperFrac;
 		// takes in 3 numbers and finds the improper fraction
 	}
 	
