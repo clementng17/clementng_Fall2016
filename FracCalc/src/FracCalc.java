@@ -6,7 +6,8 @@ public class FracCalc {
     {
         // TODO: Read the input from the user and call produceAnswer with an equation
     	Scanner UserInput = new Scanner (System.in);
-    	String input = UserInput.toString();
+    	String Input = UserInput.toString();
+    	System.out.println(Input);
     	produceAnswer();
     
     }
@@ -20,22 +21,44 @@ public class FracCalc {
     //      e.g. return ==> "1_1/4"
     public static String produceAnswer(String input)
     { 
+    	Scanner UserInput = new Scanner (System.in);
+    	input = UserInput.toString();
+    
         // TODO: Implement this function to produce the solution to the input
 		String space = " ";
-		String[] inputArray= input.split(space);
-    	String separate = "+";
-    	String[] operands = input.split(separate);
-    	if (inputArray =! operands ){
-		String operand1 = operands [0]; 
-		String operand2 = operands [1];
-        return "operand 1= " + operand1;
+		String[] inputArray = input.split(space);
+		String operand1 = inputArray [0]; 
+		String operand2 = inputArray [2];   
+		String operator = inputArray[1];
+	    return "operand 1= " + operand1;
         return "operand 2= " + operand2;
-    	}
-    	if (inputArray == operands){
-    		String subtractSign = "-";
-    		String 
-    	}
+        //Checkpoint1: takes in a formula and returns the second operand
+        String wholenumber = "null";
+        String numerator = "null";
+        String denominator = "null";
+        String underline = "_";
+        String [] SecondOperand = operand2.split(underline);
+        wholenumber = SecondOperand [0];
+        String fraction = SecondOperand [1];
+        String FractionLine = "/";
+        String [] Fraction = fraction.split(FractionLine);
+        numerator = Fraction [0];
+        denominator = Fraction [1];
+        return ("whole:" + wholenumber + " " + "numerator:" + numerator + " " + "denominator:" + denominator);
+        //Checkpoint2: separates the second operand into its wholenumber, numerator, and denominator
+        
+        if (operator == "+"){
+        	if (denominator )
+        }
+        
+         
+        
+        
+        
+	
+    
 
     // TODO: Fill in the space below with any helper methods that you think you will need
     
+}
 }
