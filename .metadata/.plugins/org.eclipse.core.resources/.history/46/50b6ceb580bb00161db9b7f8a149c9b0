@@ -136,7 +136,7 @@ public class Calculate {
 		if (power<0){
 			throw new IllegalArgumentException("exponent is a negative number");
 		}
-		double result=1.0;
+		int result=1;
 		for(int i=power; i>=0; i--){
 			result*=base;
 		}
@@ -174,7 +174,7 @@ public class Calculate {
 	
 	public static int gcf(int a,int b){
 		int smallnumber= Calculate.min(a, b);
-		int bignumber= Calculate.max(a, b);
+		int bignumber= Calculate.max1(a, b);
 		int possiblefactor = smallnumber;
 		while(possiblefactor>=2)
 		{
@@ -209,18 +209,19 @@ public class Calculate {
 		if (square(b)- 4*a*c<0){
 			return "no real roots";
 		}
-		double root1= round2((-b + sqrt(discriminant(a, b, c)))/(2*a));
-		double root2= round2((-b - sqrt(discriminant(a, b, c)))/(2*a));
+		double root1= ((-b + sqrt(discriminant(a, b, c)))/(2*a));
+		double root2= ((-b - sqrt(discriminant(a, b, c)))/(2*a));
 		if (square(b) - 4*a*c==0){
 			
-			return ("Both roots are " + root1);
+			return ("The root is " + root1);
 		}
 		if (sqrt(square(b) + 4*a*c)>=0){
-			
-		return (root1 + "and "+ root2);
+			double newroot1= root1*100/100.0;
+			double newroot2= root2*100/100.0;
+		return (newroot1 + "and "+ newroot2);
 	}
 		
-	return (root1 + "and " + root2);
+	return ("Error");
 	// takes in 3 integers, which are the coefficients of a standard form quadratic equation and returns its zeroes 
 	}
 }
