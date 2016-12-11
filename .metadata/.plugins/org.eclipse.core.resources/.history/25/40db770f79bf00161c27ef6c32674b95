@@ -38,6 +38,7 @@ public class FracCalc {
 		String operand1 = inputArray [0]; 
 		String operand2 = inputArray [2];   
 		String operator = inputArray[1];
+	    return "operand 1= " + operand1 + " " + "operand 2= " + operand2;
     
         //Checkpoint2: separates the second operand into its wholenumber, numerator, and denominator
     
@@ -56,6 +57,11 @@ public class FracCalc {
         int numerator2 = Integer.parseInt(Fraction2 [0]);
         int denominator2 = Integer.parseInt(Fraction2 [1]);
         
+      
+        return ("First operand- whole:" + wholenumber1 + " " + "numerator:" + numerator1 + " " + "denominator:" + denominator1);
+        return ("Second operand- whole:" + wholenumber2 + " " + "numerator:" + numerator2 + " " + "denominator:" + denominator2);
+        
+        //calculating formula
         if (operator == "+"){
         	addFrac(wholenumber1, numerator1, denominator1, wholenumber2, numerator2, denominator2);
         }
@@ -69,18 +75,9 @@ public class FracCalc {
         	divide(wholenumber1, numerator1, denominator1, wholenumber2, numerator2, denominator2);
         }
         else {
-        	return ("no calculations performed");
+        	return "no result";
         }
-        
-	    return ("operand 1= " + operand1 + " " + "operand 2= " + operand2 + " First operand- whole:" + wholenumber1 + " " + "numerator:" + numerator1 + " " + "denominator:" + denominator1
-        + " Second operand- whole:" + wholenumber2 + " " + "numerator:" + numerator2 + " " + "denominator:" + denominator2);
-        
-        //calculating formula
-        
-    }
-       
-        	       
-   	 
+   	 }
         //Checkpoint3
    	 	public static String addFrac(int wholenumber1, int numerator1, int denominator1, int wholenumber2, int numerator2, int denominator2){
    	 		int sum= 0;
