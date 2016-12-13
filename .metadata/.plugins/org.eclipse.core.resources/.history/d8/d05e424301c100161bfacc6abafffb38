@@ -39,7 +39,7 @@ public class FracCalc {
 		String operand2 = inputArray [2];   
 		String operator = inputArray[1];
     
-        //Checkpoint2: separates the first and second operand into its wholenumber, numerator, and denominator
+        //Checkpoint2: separates the second operand into its wholenumber, numerator, and denominator
     
    	 
 	    String [] FirstOperand = operand1.split("_");
@@ -56,8 +56,6 @@ public class FracCalc {
         int numerator2 = Integer.parseInt(Fraction2 [0]);
         int denominator2 = Integer.parseInt(Fraction2 [1]);
         
-        
-        //Checkpoint3: performs the calculations according to the operator
         if (operator == "+"){
         	addFrac(wholenumber1, numerator1, denominator1, wholenumber2, numerator2, denominator2);
         }
@@ -82,7 +80,8 @@ public class FracCalc {
     }
        
         	       
-   	 // add the the operands 
+   	 
+        //Checkpoint3
    	 	public static String addFrac(int wholenumber1, int numerator1, int denominator1, int wholenumber2, int numerator2, int denominator2){
    	 		int sum= 0;
    	 		if (numerator1==0 && numerator2== 0){
@@ -120,7 +119,7 @@ public class FracCalc {
         }
    	 	
 	   	
-	   	 // subtract the first operand from the second operand 
+	   	 
    	 	public static String minusFrac(int wholenumber1, int numerator1, int denominator1, int wholenumber2, int numerator2, int denominator2){
    	 	int difference= 0;
 	 		if (numerator1==0 && numerator2== 0){
@@ -160,7 +159,7 @@ public class FracCalc {
         
    	 	}   
 	   	 
-	   	 // multiply the two operands
+	   	 
    	 	public static String multiply(int wholenumber1, int numerator1, int denominator1, int wholenumber2, int numerator2, int denominator2){
    	 		int Numerator1=((wholenumber1*denominator1)+denominator1);
    	 		int Numerator2=((wholenumber2*denominator2)+denominator2);
@@ -169,7 +168,6 @@ public class FracCalc {
    	 		return ("product is " + newNumerator+ "/" + newDenominator);
    	 	}
    	 	
-   	 	//divide the two operands
    	 	public static String divide(int wholenumber1, int numerator1, int denominator1, int wholenumber2, int numerator2, int denominator2){
    	 		int Numerator1=((wholenumber1*denominator1)+denominator1);
 	 		int Numerator2=((wholenumber2*denominator2)+denominator2);
