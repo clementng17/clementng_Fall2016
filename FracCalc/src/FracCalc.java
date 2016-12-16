@@ -7,12 +7,11 @@ public class FracCalc {
 	public static void main(String[] args) 
     {
         // TODO: Read the input from the user and call produceAnswer with an equation
-    	String Input = "null";
-    	while ( Input != "quit"){
     	Scanner userInput = new Scanner (System.in);
-    	Input = userInput.toString();
-    	System.out.println(Input);
-    	produceAnswer(Input); 
+		String Input = userInput.nextLine();
+    	while (!Input.equals("quit")){
+    		System.out.println("Type your equation.");
+    		produceAnswer(Input); 
     	}
     	
     }
@@ -26,10 +25,7 @@ public class FracCalc {
     //      e.g. return ==> "1_1/4"
     
     
-    public static String produceAnswer(String input)
-    { 
-    	
-    
+    public static String produceAnswer(String input){ 
         // TODO: Implement this function to produce the solution to the input
     	 //Checkpoint1: takes in a formula and returns the second operand
     	
