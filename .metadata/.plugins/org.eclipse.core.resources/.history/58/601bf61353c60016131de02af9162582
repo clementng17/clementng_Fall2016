@@ -2,17 +2,18 @@
 import java.util.*;
 public class FracCalc {
 
-    private static Scanner userInput;
+    
 
 	public static void main(String[] args) 
     {
         // TODO: Read the input from the user and call produceAnswer with an equation
-    	String Input = "null";
-    	while ( Input != "quit"){
-    	userInput = new Scanner (System.in);
-    	Input = userInput.toString();
-    	System.out.println(Input);
-    	produceAnswer(Input); 
+		System.out.println("Type your equation.");
+		Scanner userInput = new Scanner (System.in);
+		String Input = userInput.nextLine();
+    	while (!Input.equals("quit")){
+    		Input = userInput.nextLine();
+    		System.out.println(produceAnswer(Input)); 
+
     	}
     	
     }
@@ -26,10 +27,7 @@ public class FracCalc {
     //      e.g. return ==> "1_1/4"
     
     
-    public static String produceAnswer(String input)
-    { 
-    	
-    
+    public static String produceAnswer(String input){ 
         // TODO: Implement this function to produce the solution to the input
     	 //Checkpoint1: takes in a formula and returns the second operand
     	
@@ -38,10 +36,8 @@ public class FracCalc {
 		String operand1 = inputArray [0]; 
 		String operand2 = inputArray [2];   
 		String operator = inputArray[1];
-	    return "operand 1= " + operand1 + " " + "operand 2= " + operand2;
     
-        //Checkpoint2: separates the second operand into its wholenumber, numerator, and denominator
-    
+        //Checkpoint2: separates the first and second operand into its wholenumber, numerator, and denominator
    	 
 	    String [] FirstOperand = operand1.split("_");
    		int wholenumber1 = Integer.parseInt(FirstOperand [0]);
@@ -57,11 +53,8 @@ public class FracCalc {
         int numerator2 = Integer.parseInt(Fraction2 [0]);
         int denominator2 = Integer.parseInt(Fraction2 [1]);
         
-      
-        return ("First operand- whole:" + wholenumber1 + " " + "numerator:" + numerator1 + " " + "denominator:" + denominator1);
-        return ("Second operand- whole:" + wholenumber2 + " " + "numerator:" + numerator2 + " " + "denominator:" + denominator2);
         
-        //calculating formula
+        //Checkpoint3: performs the calculations according to the operator
         if (operator == "+"){
         	addFrac(wholenumber1, numerator1, denominator1, wholenumber2, numerator2, denominator2);
         }
@@ -75,10 +68,18 @@ public class FracCalc {
         	divide(wholenumber1, numerator1, denominator1, wholenumber2, numerator2, denominator2);
         }
         else {
-        	return "no result";
+        	return ("no calculations performed");
         }
-   	 }
-        //Checkpoint3
+        
+	    return ("operand 1= " + operand1 + " " + "operand 2= " + operand2 + " First operand- whole:" + wholenumber1 + " " + "numerator:" + numerator1 + " " + "denominator:" + denominator1
+        + " Second operand- whole:" + wholenumber2 + " " + "numerator:" + numerator2 + " " + "denominator:" + denominator2);
+        
+        //calculating formula
+        
+    }
+       
+        	       
+   	 // add the the operands 
    	 	public static String addFrac(int wholenumber1, int numerator1, int denominator1, int wholenumber2, int numerator2, int denominator2){
    	 		int sum= 0;
    	 		if (numerator1==0 && numerator2== 0){
@@ -116,7 +117,7 @@ public class FracCalc {
         }
    	 	
 	   	
-	   	 
+	   	 // subtract the first operand from the second operand 
    	 	public static String minusFrac(int wholenumber1, int numerator1, int denominator1, int wholenumber2, int numerator2, int denominator2){
    	 	int difference= 0;
 	 		if (numerator1==0 && numerator2== 0){
@@ -156,7 +157,7 @@ public class FracCalc {
         
    	 	}   
 	   	 
-	   	 
+	   	 // multiply the two operands
    	 	public static String multiply(int wholenumber1, int numerator1, int denominator1, int wholenumber2, int numerator2, int denominator2){
    	 		int Numerator1=((wholenumber1*denominator1)+denominator1);
    	 		int Numerator2=((wholenumber2*denominator2)+denominator2);
@@ -165,6 +166,7 @@ public class FracCalc {
    	 		return ("product is " + newNumerator+ "/" + newDenominator);
    	 	}
    	 	
+   	 	//divide the two operands
    	 	public static String divide(int wholenumber1, int numerator1, int denominator1, int wholenumber2, int numerator2, int denominator2){
    	 		int Numerator1=((wholenumber1*denominator1)+denominator1);
 	 		int Numerator2=((wholenumber2*denominator2)+denominator2);

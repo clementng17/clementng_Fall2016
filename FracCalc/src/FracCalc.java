@@ -7,11 +7,13 @@ public class FracCalc {
 	public static void main(String[] args) 
     {
         // TODO: Read the input from the user and call produceAnswer with an equation
-    	Scanner userInput = new Scanner (System.in);
+		System.out.println("Type your equation.");
+		Scanner userInput = new Scanner (System.in);
 		String Input = userInput.nextLine();
     	while (!Input.equals("quit")){
-    		System.out.println("Type your equation.");
-    		produceAnswer(Input); 
+    		Input = userInput.nextLine();
+    		System.out.println(produceAnswer(Input)); 
+
     	}
     	
     }
@@ -24,36 +26,77 @@ public class FracCalc {
     // The function should return the result of the fraction after it has been calculated
     //      e.g. return ==> "1_1/4"
     
+    public static String[] parseSpace(String input){
+    	String space= " ";
+    	String [] operandsOperator= input.split(space);
+    	return operandsOperator;
+    }
     
     public static String produceAnswer(String input){ 
         // TODO: Implement this function to produce the solution to the input
     	 //Checkpoint1: takes in a formula and returns the second operand
-    	
-		String space = " ";
-		String[] inputArray = input.split(space);
-		String operand1 = inputArray [0]; 
-		String operand2 = inputArray [2];   
-		String operator = inputArray[1];
-    
+    	String [] equation = parseSpace(input);
+    	String result= "";
+    	if (equation.length<4){
+    		String operand1 = equation [0]; 
+			String operand2 = equation [2];   
+			String operator = equation [1];
+    	}
+    	if (equation.length>4){
+    		for (int i=1; i< equation.length;i+=2){
+    			if (!equation[i].equals("+")){
+    				result= addFrac(parseOperand(input));
+    				return result;
+    			}
+    			if (!equation[i].equals("-")){
+    				result= minusFrac(parseOperand(input));
+    				return result;
+	    		}
+	    		if (!equation[i].equals("*")){
+	    			result= multiply(parseOperand(input));
+	    			return result;
+	    		}
+	    		if (!equation[i].equals("/")){
+	    			result= divide(parseOperand(input));
+	    			return result;
+	    		}else {
+	    			return "no result";
+	    		}
+    		
+    		}
+    	}
+    }
         //Checkpoint2: separates the first and second operand into its wholenumber, numerator, and denominator
-    
-   	 
-	    String [] FirstOperand = operand1.split("_");
-   		int wholenumber1 = Integer.parseInt(FirstOperand [0]);
-   	    String fraction1 = FirstOperand [1];
-   		String [] Fraction1 = fraction1.split("/");
-        int numerator1 = Integer.parseInt(Fraction1 [0]);
-        int denominator1 = Integer.parseInt(Fraction1 [1]);
-      
-        String [] SecondOperand = operand2.split("_");
-        int wholenumber2 = Integer.parseInt(SecondOperand [0]);
-        String fraction2 = SecondOperand [1];
-        String [] Fraction2 = fraction2.split("/");
-        int numerator2 = Integer.parseInt(Fraction2 [0]);
-        int denominator2 = Integer.parseInt(Fraction2 [1]);
-        
+    	public static int[] parseOperand(String operand){
+    		
+    		int wholenumber= 0;
+    		int numerator= 0;
+    		int denominator= 0;
+	    		if (operand.indexOf("/")==-1 && (operand.indexOf("_")==-1)){
+	    			wholenumber = Integer.parseInt(operand);
+	    			numerator=0; 
+	    			denominator=1;
+	    		}
+	    		else if (operand.indexOf("_")==-1 && operand.indexOf("/")>0){
+	    			String[] fraction= operand.split("/");
+	    			numerator= Integer.parseInt(fraction [0]);
+	    			denominator= Integer.parseInt(fraction [1]);
+	    		} else {
+			    String [] FirstOperand = operand.split("_");
+		   		wholenumber = Integer.parseInt(FirstOperand [0]);
+		   	    String fraction1 = FirstOperand [1];
+		   		String [] Fraction1 = fraction1.split("/");
+		        numerator = Integer.parseInt(Fraction1 [0]);
+		        denominator = Integer.parseInt(Fraction1 [1]);
+	    		}
+    		int []insideOperand = {wholenumber, numerator, denominator};
+    		return insideOperand;
+    		 
+    	}
         
         //Checkpoint3: performs the calculations according to the operator
+    	
+    	/*
         if (operator == "+"){
         	addFrac(wholenumber1, numerator1, denominator1, wholenumber2, numerator2, denominator2);
         }
@@ -72,24 +115,24 @@ public class FracCalc {
         
 	    return ("operand 1= " + operand1 + " " + "operand 2= " + operand2 + " First operand- whole:" + wholenumber1 + " " + "numerator:" + numerator1 + " " + "denominator:" + denominator1
         + " Second operand- whole:" + wholenumber2 + " " + "numerator:" + numerator2 + " " + "denominator:" + denominator2);
-        
+        */
         //calculating formula
         
     }
        
         	       
    	 // add the the operands 
-   	 	public static String addFrac(int wholenumber1, int numerator1, int denominator1, int wholenumber2, int numerator2, int denominator2){
+   	 	public static String addFrac(int [] operand1, int [] operand2){
    	 		int sum= 0;
-   	 		if (numerator1==0 && numerator2== 0){
-   	 			sum= (wholenumber1+wholenumber2);
+   	 		if (operand1[1]==0 && operand2[1]== 0){
+   	 			sum= (operand1[0]+operand2[0]);
    	 			return ("sum is " + sum); 
    	 		}
-        	if (denominator1== denominator2 ){
-        		int newNumerator= numerator1+numerator2; 
-        		int newWholenumber= wholenumber1+wholenumber2; 
-        		if (newNumerator >= denominator1){
-        			int remainder= newNumerator/denominator1; 
+        	if (operand1[2]== operand2[2] ){
+        		int newNumerator= operand1[1]+operand2[1]; 
+        		int newWholenumber= operand1[0]+operand2[0]; 
+        		if (newNumerator >= operand1[2]){
+        			int remainder= newNumerator/operand1[2]; 
         			newNumerator= (newNumerator-(remainder*denominator1));
         			return ("sum is "+ newWholenumber+remainder+ "_" + newNumerator + "/" + denominator1);
         		}
