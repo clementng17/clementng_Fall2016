@@ -6,26 +6,19 @@ public class FracCalc {
 
 	public static void main(String[] args) 
     {
-        // TODO: Read the input from the user and call produceAnswer with an equation
+        // take in an equation from client and calls produceAnser
 		System.out.println("Type your equation.");
 		Scanner userInput = new Scanner (System.in);
 		String Input = userInput.nextLine();
     	while (!Input.equals("quit")){
-    		Input = userInput.nextLine();
     		System.out.println(produceAnswer(Input)); 
+    		Input = userInput.nextLine();
 
     	}
     	
     }
-    // ** IMPORTANT ** DO NOT DELETE THIS FUNCTION.  This function will be used to test your code
-    // This function takes a String 'input' and produces the result
-    //
-    // input is a fraction string that needs to be evaluated.  For your program, this will be the user input.
-    //      e.g. input ==> "1/2 + 3/4"
-    //        
-    // The function should return the result of the fraction after it has been calculated
-    //      e.g. return ==> "1_1/4"
-    
+   
+    //eliminates the spaces between operators and operands
     public static String[] parseSpace(String input){
     	String space= " ";
     	String [] operandsOperator= input.split(space);
@@ -33,40 +26,67 @@ public class FracCalc {
     }
     
     public static String produceAnswer(String input){ 
-        // TODO: Implement this function to produce the solution to the input
-    	 //Checkpoint1: takes in a formula and returns the second operand
+       
+    	//reminds client that there must be spaces between operators and operands 
+    	if (input.indexOf(" ") ==-1){
+    		return "invalid format";
+    	}
+    	//reminds client to type in an equation
+    	if (input.equals(" ")){
+    		return "Type your equation";
+    	}
+    	//reminds client that numbers cannot be divided by zero
+    	if (input.indexOf("/0") >= 0){
+    		return "ERROR: Cannot divide by 0.";
+    	}
+    	
+    	//calls methods according to operators 
     	String [] equation = parseSpace(input);
-    	String result= "";
+    	int [] store= parseOperand(equation[0]);
     	if (equation.length<4){
     		String operand1 = equation [0]; 
 			String operand2 = equation [2];   
 			String operator = equation [1];
+			if (operator.equals("+")){
+				store= (addFrac(parseOperand(operand1), parseOperand(operand2)));
+			}
+			if (operator.equals("-")){
+				store= (minusFrac(parseOperand(operand1), parseOperand(operand2)));
+			}
+			if (operator.equals("*")){
+				store= (multiply(parseOperand(operand1), parseOperand(operand2)));
+			}
+			if (operator.equals("/")){
+				store= (divide(parseOperand(operand1), parseOperand(operand2)));
+			}
+			return simplify(store);
     	}
-    	if (equation.length>4){
+    	//checks if there are more than 2 operands
+    	if (equation.length>3){
+    		int [] storeCalculation= parseOperand(equation[0]);
     		for (int i=1; i< equation.length;i+=2){
-    			if (!equation[i].equals("+")){
-    				result= addFrac(parseOperand(input));
-    				return result;
+    			if (equation[i].equals("+")){
+    				storeCalculation= addFrac(storeCalculation, parseOperand(equation[i+1]));
     			}
-    			if (!equation[i].equals("-")){
-    				result= minusFrac(parseOperand(input));
-    				return result;
+    			else if (equation[i].equals("-")){
+    				storeCalculation= minusFrac(storeCalculation, parseOperand(equation[i+1]));
 	    		}
-	    		if (!equation[i].equals("*")){
-	    			result= multiply(parseOperand(input));
-	    			return result;
+    			else if (equation[i].equals("*")){
+    				storeCalculation= multiply(storeCalculation, parseOperand(equation[i+1]));
 	    		}
-	    		if (!equation[i].equals("/")){
-	    			result= divide(parseOperand(input));
-	    			return result;
+    			else if (equation[i].equals("/")){
+    				storeCalculation= divide(storeCalculation, parseOperand(equation[i+1]));
 	    		}else {
 	    			return "no result";
 	    		}
-    		
+        		return (simplify(storeCalculation));
     		}
+    		return (simplify(storeCalculation));
     	}
+    	else
+    		return "no results";
     }
-        //Checkpoint2: separates the first and second operand into its wholenumber, numerator, and denominator
+        //separates an operand into its whole number, numerator, and denominator
     	public static int[] parseOperand(String operand){
     		
     		int wholenumber= 0;
@@ -94,131 +114,108 @@ public class FracCalc {
     		 
     	}
         
-        //Checkpoint3: performs the calculations according to the operator
+    	//takes in the result of a calculation and returns the answer in a string format
+    	public static String printAnswer(int [] answer) {
+    		int numerator= answer[0];
+    		int denominator= answer[1];
+    			if (denominator ==0){
+    				return "Error: undefined number.";
+    			}
+	    		if (numerator ==0){
+	    		return "0";
+	    		}
+	    		if (numerator>0){
+	    			return (numerator+"/"+denominator);
+	    		}else {
+	    			return "error";
+	    		}
+    	}	
+    	//returns the answer in a simplified fraction
+    	public static String simplify(int [] answer){
+    		int numerator= answer[0];
+    		int denominator= answer[1];
+	    		if (denominator==0){
+					return ("Error: Undefined number");
+				}
+	    		if (numerator==0 && denominator!=0){
+	    			return ("0");
+	    		}
+    			if (denominator==1){
+    				return (numerator + "");
+    			}
+    			if (numerator==denominator){
+    				return ("1");
+    			}
+    			if (numerator%denominator==0){
+    				return (numerator/denominator + "");
+    			}
+    			// finds the gcf of the denominator and numerator and dvidie both by gcf
+    			if (numerator%denominator!=0){ 
+    				int gcf= gcf(answer[0], answer[1]);
+    
+    				return (answer[0]/(gcf) + "/" + answer[1]/(gcf));
+    			}else {
+			    	return (numerator + "/" + denominator);
+    			}
+    	}
+    	//finds the greatest common factor of two numbers
+    	public static int gcf(int num1, int num2){
+    		while (num1 != 0 && num2 != 0){
+    			int gcf = num2;
+    			num2 = num1 % num2;
+    			num1 = gcf;
+    		}
+    		int gcf = num1 + num2;
+    		return gcf;
+    	}
     	
-    	/*
-        if (operator == "+"){
-        	addFrac(wholenumber1, numerator1, denominator1, wholenumber2, numerator2, denominator2);
-        }
-        if (operator == "-"){
-        	minusFrac(wholenumber1, numerator1, denominator1, wholenumber2, numerator2, denominator2);
-        }
-        if (operator == "*"){
-        	multiply(wholenumber1, numerator1, denominator1, wholenumber2, numerator2, denominator2);
-        }
-        if (operator == "/"){
-        	divide(wholenumber1, numerator1, denominator1, wholenumber2, numerator2, denominator2);
-        }
-        else {
-        	return ("no calculations performed");
-        }
-        
-	    return ("operand 1= " + operand1 + " " + "operand 2= " + operand2 + " First operand- whole:" + wholenumber1 + " " + "numerator:" + numerator1 + " " + "denominator:" + denominator1
-        + " Second operand- whole:" + wholenumber2 + " " + "numerator:" + numerator2 + " " + "denominator:" + denominator2);
-        */
-        //calculating formula
-        
-    }
-       
+     
         	       
    	 // add the the operands 
-   	 	public static String addFrac(int [] operand1, int [] operand2){
-   	 		int sum= 0;
-   	 		if (operand1[1]==0 && operand2[1]== 0){
-   	 			sum= (operand1[0]+operand2[0]);
-   	 			return ("sum is " + sum); 
-   	 		}
-        	if (operand1[2]== operand2[2] ){
-        		int newNumerator= operand1[1]+operand2[1]; 
-        		int newWholenumber= operand1[0]+operand2[0]; 
-        		if (newNumerator >= operand1[2]){
-        			int remainder= newNumerator/operand1[2]; 
-        			newNumerator= (newNumerator-(remainder*denominator1));
-        			return ("sum is "+ newWholenumber+remainder+ "_" + newNumerator + "/" + denominator1);
-        		}
-        		else {
-        			return ("sum is" + newWholenumber + "_" + newNumerator+ "/" + denominator1);
-        		}
-        	}
-        	if (denominator1 != denominator2){
-        		int newDenominator= denominator1*denominator2;
-        		int newNumerator= numerator1*denominator2+numerator2*denominator1; 
-        		int newWholenumber= wholenumber1+wholenumber2; 
-        		if (newNumerator >= newDenominator){
-        			int remainder= newNumerator/newDenominator; 
-        			newNumerator= (newNumerator-(remainder*newDenominator));
-        			return ("sum is "+ newWholenumber+remainder+ "_" + newNumerator + "/" + newDenominator);
-        		}
-        		else {
-        			return ("sum is" + newWholenumber + "_" + newNumerator+ "/" + newDenominator);
-        		}
-        	}
-        	else {
-    			return ("no calculations performed");
-    		}
+   	 	public static int [] addFrac(int [] operand1, int [] operand2){
+   	 		int newWholenumber= operand1[0]+ operand2[0];
+   	 		int denominator= operand1[2]*operand2[2];
+   	 		int numerator1= operand1[1]*operand2[2];
+   	 		int numerator2= operand2[1]*operand1[2];
+   	 		int newNumerator= numerator1 + numerator2;
+   	 		int newnewNumerator= newWholenumber*denominator+newNumerator;
+   	 		int answer []= {newnewNumerator, denominator};
+   	 		return answer; 
         }
    	 	
 	   	
 	   	 // subtract the first operand from the second operand 
-   	 	public static String minusFrac(int wholenumber1, int numerator1, int denominator1, int wholenumber2, int numerator2, int denominator2){
-   	 	int difference= 0;
-	 		if (numerator1==0 && numerator2== 0){
-	 			difference= (wholenumber1-wholenumber2);
-	 			return ("difference is " + difference); 
-	 		}
-	 		if (denominator1== denominator2 ){
-        		int newNumerator= numerator1-numerator2; 
-        		int newWholenumber= wholenumber1-wholenumber2; 
-        		if (newNumerator >= denominator1){
-        			int remainder= newNumerator/denominator1; 
-        			newNumerator= (newNumerator-(remainder*denominator1));
-        			return ("difference is "+ newWholenumber+remainder+ "_" + newNumerator + "/" + denominator1);
-        		}
-        		else {
-        			return ("sum is" + newWholenumber + "_" + newNumerator+ "/" + denominator1);
-        		}
-        		
-         		
-	 		}
-	 		if (denominator1 != denominator2){
-        		int newDenominator= denominator1*denominator2;
-        		int newNumerator= numerator1*denominator2-numerator2*denominator1; 
-        		int newWholenumber= wholenumber1-wholenumber2; 
-        		if (newNumerator >= newDenominator){
-        			int remainder= newNumerator/newDenominator; 
-        			newNumerator= (newNumerator-(remainder*newDenominator));
-        			return ("sum is "+ newWholenumber+remainder+ "_" + newNumerator + "/" + newDenominator);
-        		}
-        		else {
-        			return ("difference is" + newWholenumber + "_" + newNumerator+ "/" + newDenominator);
-        		}
-   	 	     }  
-	 		else {
-    			return ("no calculations performed");
-    		}
+   	 	public static int [] minusFrac(int [] operand1, int [] operand2){
+   	 	int newWholenumber= operand1[0] - operand2[0];
+	 		int denominator= operand1[2]*operand2[2];
+	 		int numerator1= operand1[1]*operand2[2];
+	 		int numerator2= operand2[1]*operand1[2];
+	 		int newNumerator= numerator1 - numerator2;
+	 		int newnewNumerator= newWholenumber*denominator+newNumerator;
+	 		int answer []= {newnewNumerator, denominator};
+	 		return answer;
         
    	 	}   
 	   	 
 	   	 // multiply the two operands
-   	 	public static String multiply(int wholenumber1, int numerator1, int denominator1, int wholenumber2, int numerator2, int denominator2){
-   	 		int Numerator1=((wholenumber1*denominator1)+denominator1);
-   	 		int Numerator2=((wholenumber2*denominator2)+denominator2);
-   	 		int newDenominator= denominator1*denominator2;
-   	 		int newNumerator= Numerator1+Numerator2;
-   	 		return ("product is " + newNumerator+ "/" + newDenominator);
+   	 	public static int [] multiply(int [] operand1, int [] operand2){
+   	 		
+   	 		int Numerator1=((operand1[0]*operand1[2])+operand1[1]);
+   	 		int Numerator2=((operand2[0]*operand2[2])+operand2[1]);
+   	 		int newDenominator= operand1[2]*operand2[2];
+   	 		int newNumerator= Numerator1*Numerator2;
+   	 		int answer [] = {newNumerator, newDenominator};
+   	 		return answer;
    	 	}
    	 	
    	 	//divide the two operands
-   	 	public static String divide(int wholenumber1, int numerator1, int denominator1, int wholenumber2, int numerator2, int denominator2){
-   	 		int Numerator1=((wholenumber1*denominator1)+denominator1);
-	 		int Numerator2=((wholenumber2*denominator2)+denominator2);
-   	 		int newNumerator= (Numerator1*denominator2);
-   	 		int newDenominator=  (denominator1*Numerator2);
-   	 		return ("quotient is " + newNumerator+ "/" + newDenominator);
+   	 	public static int [] divide(int [] operand1, int [] operand2){
+   	 		int Numerator1=((operand1[0]*operand1[2])+operand1[1]);
+	 		int Numerator2=((operand2[0]*operand2[2])+operand2[1]);
+   	 		int newNumerator= (Numerator1*operand2[2]);
+   	 		int newDenominator=  (operand1[2]*Numerator2);
+   	 		int answer [] = {newNumerator, newDenominator};
+   	 		return answer;
    	 	}
         
-}
-    
-
-    // TODO: Fill in the space below with any helper methods that you think you will need
-    
+}    
