@@ -21,17 +21,21 @@ public class Calculate {
 	}
 	
 	public static double toDegrees(double number){
-		return(number*180/3.14159);
+		double pie= 3.14159;
+		double answer =(number*180/pie);
+		return answer;
 		//converts radians to degrees
 	}
 	
 	public static double toRadians(double number){
-		return(number*3.14159/180);
+		double pie= 3.14159;
+		double answer = (number*pie/180);
+		return answer;
 		//converts degrees to radians 
 	}
 	
 	public static double discriminant(double number1, double number2, double number3){ 
-		return((number2*number2)-4*number1*number3);
+		return((number2*number2)-(4*number1*number3));
 		//finds the discriminant from the coefficients a, b, and c of an equation
 	}
 	
@@ -49,8 +53,8 @@ public class Calculate {
 		// finds the mixed number
 	}
 	
-	public static String foil(int number1, int number2, int number3, int number4, int n){
-		return(number1*number3 + "n^2"+ number1*number4+number2*number3 +"n" +number2*number4);
+	public static String foil(int number1, int number2, int number3, int number4, String n){
+		return(number1*number3 + n + "^2"+ ((number1*number4)+(number2*number3)) + n +number2*number4);
 		// takes in 4 numbers and a variable and returns a quadratic equation in standard form
 	}
 	
@@ -88,7 +92,9 @@ public class Calculate {
 		if (a>b){
 			return(a);
 		}
-		else return(b);
+		else{
+			return(b);
+		}
 		// takes in two integers and returns the maximum of the two integers
 	}
 	
@@ -96,7 +102,7 @@ public class Calculate {
 		if (a>b && a>c){
 			return(a);
 		}
-		if (b>a && b>c){
+		else if (b>a && b>c){
 			return(b);
 		} 
 		else return(c);
@@ -118,17 +124,19 @@ public class Calculate {
 	}
 	
 	public static double round2(double input){
-		double result = 0;
-		if (input>0){
-			result = input*100.0+.5;
-		}
-		else { 
-			result = input*100.0-.5;
-		}
-		return (result/100.0);
-		// takes in a double and returns it to the nearest tenth decimal place
-	}
-	
+		int number = ((int)(input * 100));
+		
+		 if ((input * 100)-number >= .5){
+			 double result = ((int)(input*100)+1)/(double)100;
+			 return result;		
+		 }
+		 
+		 else {
+			 double result = (int)(input*100)/((double)100);
+			 return result;
+		 }
+	}	// takes in a double and returns it to the nearest tenth decimal place
+
 	public static double exponent(double base, int power){
 		if (base<0){
 			throw new IllegalArgumentException("base is a negative number");
@@ -136,8 +144,11 @@ public class Calculate {
 		if (power<0){
 			throw new IllegalArgumentException("exponent is a negative number");
 		}
-		double result=1.0;
-		for(int i=power; i>=0; i--){
+		if (power ==0){
+			return 1.0;
+		}
+		double result= base;
+		for(int i=1; i<power; i++){
 			result*=base;
 		}
 		return result; 
@@ -206,21 +217,23 @@ public class Calculate {
 	}
 
 	public static String quadForm(int a, int b, int c){
-		if (square(b)- 4*a*c<0){
+		if (Calculate.discriminant(a,b,c) <0){
 			return "no real roots";
 		}
-		double root1= round2((-b + sqrt(discriminant(a, b, c)))/(2*a));
-		double root2= round2((-b - sqrt(discriminant(a, b, c)))/(2*a));
-		if (square(b) - 4*a*c==0){
-			
+		
+		double root1= Calculate.round2((-b + Calculate.sqrt(Calculate.discriminant(a, b, c)))/(2*a));
+		double root2= Calculate.round2((-b - Calculate.sqrt(Calculate.discriminant(a, b, c)))/(2*a));
+		if (Calculate.square(b) - 4*a*c==0){
+			root1 = Calculate.round2(-b /(2*a));
 			return ("Both roots are " + root1);
 		}
-		if (sqrt(square(b) + 4*a*c)>=0){
-			
-		return (root1 + "and "+ root2);
-	}
-		
-	return (root1 + "and " + root2);
-	// takes in 3 integers, which are the coefficients of a standard form quadratic equation and returns its zeroes 
+		else {
+			if (root1 > root2){
+				return (root2 + "and " + root1);
+			} else {
+				return (root1 + "and "+ root2);
+			}
+		}
+// takes in 3 integers, which are the coefficients of a standard form quadratic equation and returns its zeroes 
 	}
 }
