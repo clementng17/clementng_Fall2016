@@ -3,7 +3,9 @@
  * AP Computer Science- Math Library
  * 1st Period
  */
+
 public class Calculate {
+	
 	public static int square(int number){
 		return(number*number);
 		 //squares a number
