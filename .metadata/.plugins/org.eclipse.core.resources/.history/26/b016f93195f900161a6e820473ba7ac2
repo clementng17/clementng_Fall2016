@@ -1,0 +1,23 @@
+import java.io.*;
+import java.util.Scanner;
+
+
+public class SlideProblemTemperature {
+
+	public static void main(String[] args) throws FileNotFoundException{
+		// TODO Auto-generated method stub
+		Scanner input = new Scanner(new File("src/weather.txt"));		
+		double difference;
+		double firstTemperature;
+		double nextTemperature;
+		firstTemperature = input.nextDouble();
+		nextTemperature = firstTemperature;
+		while (input.hasNextDouble()){ 
+			firstTemperature = input.nextDouble(); 
+			difference = firstTemperature - nextTemperature;
+			System.out.println(nextTemperature + " to " + firstTemperature + ", change = " + difference);
+			nextTemperature = firstTemperature;
+		}
+	}
+
+}
