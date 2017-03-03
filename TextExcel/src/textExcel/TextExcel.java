@@ -8,9 +8,21 @@ import java.util.Scanner;
 public class TextExcel
 {
 
-	public static void main(String[] args)
-	{
+	public static void main(String[] args){
 	    // Add your command loop here
-		public Spreadsheet 
+		
+		Scanner input= new Scanner (System.in);
+		Spreadsheet clement = new Spreadsheet(); 
+
+		public String processCommand(String command){
+			return null;
+		}
+		
+			
+		
+		
+		
+	
+		
 	}
 }
