@@ -4,20 +4,18 @@ package textExcel;
 
 public class SpreadsheetLocation implements Location
 {
-	private int row;
-	private int cols;
     @Override
     public int getRow()
     {
         // TODO Auto-generated method stub
-        return this.row;
+        return 20;
     }
 
     @Override
     public int getCol()
     {
         // TODO Auto-generated method stub
-        return this.cols;
+        return 12;
     }
     
     public SpreadsheetLocation(String cellName)

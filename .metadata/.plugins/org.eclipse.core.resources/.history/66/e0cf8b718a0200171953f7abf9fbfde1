@@ -2,16 +2,10 @@ package textExcel;
 
 // Update this file with your own code.
 
-public class Spreadsheet implements Grid  
+public class Spreadsheet implements Grid
 {
-	int row;
-	int cols;
-	
-	public void Spreasheet(int row, int cols){
-		
-		this.row= row;
-		this.cols= cols;
-		int [][] EmptyCellArray = new int[cols-1][row-1];
+	public Spreasheet(){
+	EmptyCell [][] EmptyCellArray = [11][19];
 	}
 	
 	@Override
@@ -23,13 +17,13 @@ public class Spreadsheet implements Grid
 	@Override
 	public int getRows()
 	{
-		return this.row;
+		return 20;
 	}
 
 	@Override
 	public int getCols()
 	{
-		return this.cols;
+		return 12;
 	}
 
 	@Override

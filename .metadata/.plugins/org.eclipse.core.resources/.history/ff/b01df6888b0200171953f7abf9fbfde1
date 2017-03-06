@@ -11,7 +11,7 @@ public class Spreadsheet implements Grid
 		
 		this.row= row;
 		this.cols= cols;
-		int [][] EmptyCellArray = new int[cols-1][row-1];
+		Cell [][] EmptyCellArray = new EmptyCell[cols-1][row-1];
 	}
 	
 	@Override

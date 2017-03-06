@@ -10,7 +10,7 @@ public class TextExcel
 
 	public static void main(String[] args){
 	    // Add your command loop here
-		Spreadsheet table = new Spreadsheet(); 
+		Spreadsheet table = new Spreadsheet(20, 12); 
 		Scanner input= new Scanner (System.in);
 		String command= input.nextLine();
 		while(!command.equals("quit")){
