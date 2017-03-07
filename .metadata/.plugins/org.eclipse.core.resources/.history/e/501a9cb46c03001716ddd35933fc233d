@@ -16,14 +16,13 @@ public class SpreadsheetLocation implements Location
     @Override
     public int getRow()
     {
-    	int row= Integer.parseInt(cellName.substring(1));
-        return (row-1);
+        return (Integer.parseInt(cellName.substring(1))-1);
     }
     
     @Override
     public int getCol()
     {
-    	String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    	String alphabet = "ABCDEFJHIJKLMNOPQRSTUVWXYZ";
     	for (int i =0; i <28;i++){
 	   		 if  (cellName.charAt(0) == alphabet.charAt(i)){
 	   			 cols=i; 
