@@ -11,25 +11,25 @@ public class Spreadsheet implements Grid
 		
 		this.row= row;
 		this.cols= cols;
-		int [][] EmptyCellArray = new int[12-1][20-1];
+		int [][] EmptyCellArray = new int[cols-1][row-1];
 	}
 	
 	@Override
 	public String processCommand(String command)
 	{
-		return command;
+		return null;
 	}
 
 	@Override
 	public int getRows()
 	{
-		return 20;
+		return this.row;
 	}
 
 	@Override
 	public int getCols()
 	{
-		return 12;
+		return this.cols;
 	}
 
 	@Override

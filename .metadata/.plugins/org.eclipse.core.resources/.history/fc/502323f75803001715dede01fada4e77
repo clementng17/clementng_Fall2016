@@ -6,7 +6,7 @@ public class SpreadsheetLocation implements Location
 {
 	private int row;
 	private int cols;
-	public String alphabet = "ABCDEFJHIJKLMNOPQRSTUVWXYZ";
+	private String alphabet = "ABCDEFJHIJKLMNOPQRSTUVWXYZ";
 
     @Override
     public int getRow()
@@ -26,7 +26,7 @@ public class SpreadsheetLocation implements Location
     			 cols=i; 
     		 }
     	 }
-    	 row= (Integer.parseInt(cellName.substring(1))-1); 
+    	 int row= Integer.parseInt(cellName.substring(1))-1; 
     
     }
     

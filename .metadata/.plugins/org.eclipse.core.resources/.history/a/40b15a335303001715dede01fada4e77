@@ -23,13 +23,13 @@ public class Spreadsheet implements Grid
 	@Override
 	public int getRows()
 	{
-		return 20;
+		return this.row;
 	}
 
 	@Override
 	public int getCols()
 	{
-		return 12;
+		return this.cols;
 	}
 
 	@Override
