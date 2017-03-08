@@ -5,13 +5,11 @@ import java.util.Scanner;
 
 // Update this file with your own code.
 
-public class TextExcel implements Cell
+public class TextExcel
 {
 
 	public static void main(String[] args){
 	    // Add your command loop here
-		TestsALL.Helper th = new TestsALL.Helper();
-        System.out.println(th.getText());
 		Spreadsheet table = new Spreadsheet(); 
 		Scanner input= new Scanner (System.in);
 		String command= input.nextLine();
@@ -19,8 +17,6 @@ public class TextExcel implements Cell
 			table.processCommand(command);
 			command=input.nextLine();
 		}
-		
-	
 		
 	}
 }

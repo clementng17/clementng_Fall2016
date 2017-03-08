@@ -24,7 +24,7 @@ public class SpreadsheetLocation implements Location
     public int getCol()
     {
     	String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    	for (int i =0; i <26;i++){
+    	for (int i =0; i <28;i++){
 	   		 if  (cellName.charAt(0) == alphabet.charAt(i)){
 	   			 cols=i; 
 	   		 }
