@@ -6,7 +6,9 @@ public class Spreadsheet implements Grid
 {
 	int row;
 	int cols;
-	
+	public static void main(String[] args){
+		getGridText();
+	}
 
 	public void Spreasheet(int row, int cols){
 		

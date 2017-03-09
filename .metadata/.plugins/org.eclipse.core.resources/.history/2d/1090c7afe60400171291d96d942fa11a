@@ -7,7 +7,6 @@ public class Spreadsheet implements Grid
 	int row;
 	int cols;
 	
-
 	public void Spreasheet(int row, int cols){
 		
 		this.row= row;
@@ -40,34 +39,32 @@ public class Spreadsheet implements Grid
 	}
 
 	@Override
-	public  String getGridText()
+	public String getGridText()
 	{
 		String alphabet= "ABCDEFGHIJKL";
-		String firstline;
-		String grid="";
 		//12
 		//first row 
-		firstline= (print3spaces());
+		System.out.print(print3spaces());
 		for (int i=0; i<=11;i++){
-			firstline+=("|" + alphabet.charAt(i)+ print9spaces());
+			System.out.print("|" + alphabet.charAt(i)+ print9spaces());
 		}
-		firstline+= ("\n");
+		System.out.println("");
 		for (int i=1; i<=20; i++){
 			if (i<10){
-				grid+= (i + print2spaces()+ "\n");
+				System.out.println(i + print2spaces());
 				for (int j=1; j<=12;i++){
-					grid+=("|" + print10spaces());
+					System.out.print("|" + print10spaces());
 				}
 			}
 			if (i>=10){
-				grid+=(i + " " + "\n");
+				System.out.println(i + " ");
 				for (int k=1; k<=12;i++){
-					grid+=("|" + print10spaces());
+					System.out.print("|" + print10spaces());
 			}
 			
 		}
 	}
-		return firstline + grid;
+		return null;
 }
 	public String print9spaces(){
 		return ("         ");

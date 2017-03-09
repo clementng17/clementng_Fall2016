@@ -7,7 +7,6 @@ public class Spreadsheet implements Grid
 	int row;
 	int cols;
 	
-
 	public void Spreasheet(int row, int cols){
 		
 		this.row= row;
@@ -40,7 +39,7 @@ public class Spreadsheet implements Grid
 	}
 
 	@Override
-	public  String getGridText()
+	public String getGridText()
 	{
 		String alphabet= "ABCDEFGHIJKL";
 		String firstline;
