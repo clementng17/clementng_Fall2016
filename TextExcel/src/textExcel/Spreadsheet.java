@@ -7,7 +7,6 @@ public class Spreadsheet implements Grid
 	int row;
 	int cols;
 	
-
 	public void Spreasheet(int row, int cols){
 		
 		this.row= row;
@@ -19,6 +18,10 @@ public class Spreadsheet implements Grid
 	public String processCommand(String command)
 	{
 		return command;
+	}
+	
+	public String cellInspect(){
+		
 	}
 
 	@Override
@@ -69,6 +72,7 @@ public class Spreadsheet implements Grid
 	}
 		return firstline + grid;
 }
+	
 	public String print9spaces(){
 		return ("         ");
 	}
