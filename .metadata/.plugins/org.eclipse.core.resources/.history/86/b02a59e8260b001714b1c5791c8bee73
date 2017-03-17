@@ -19,6 +19,10 @@ public class Spreadsheet implements Grid
 	{
 		return command;
 	}
+	
+	public String cellInspect(){
+		
+	}
 
 	@Override
 	public int getRows()
@@ -39,7 +43,7 @@ public class Spreadsheet implements Grid
 	}
 
 	@Override
-	public String getGridText()
+	public  String getGridText()
 	{
 		String alphabet= "ABCDEFGHIJKL";
 		String firstline;
@@ -68,6 +72,7 @@ public class Spreadsheet implements Grid
 	}
 		return firstline + grid;
 }
+	
 	public String print9spaces(){
 		return ("         ");
 	}

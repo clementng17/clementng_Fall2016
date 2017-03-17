@@ -11,7 +11,7 @@ public class Spreadsheet implements Grid
 		
 		this.row= row;
 		this.cols= cols;
-		int [][] EmptyCellArray = new int[12-1][20-1];
+		int [][] EmptyCellArray = new int[12][20];
 	}
 	
 	@Override
@@ -48,43 +48,32 @@ public class Spreadsheet implements Grid
 		String alphabet= "ABCDEFGHIJKL";
 		String firstline;
 		String grid="";
+		String tenspaces="          ";
+		String ninespaces="         ";
 		//12
 		//first row 
-		firstline= (print3spaces());
+		firstline= ("   ");
 		for (int i=0; i<=11;i++){
-			firstline+=("|" + alphabet.charAt(i)+ print9spaces());
+			firstline+=("|" + alphabet.charAt(i)+ ninespaces);
 		}
 		firstline+= ("\n");
 		for (int i=1; i<=20; i++){
 			if (i<10){
-				grid+= (i + print2spaces()+ "\n");
+				grid+= (i + "  "+ "\n");
 				for (int j=1; j<=12;i++){
-					grid+=("|" + print10spaces());
+					grid+=("|" + tenspaces);
 				}
 			}
 			if (i>=10){
 				grid+=(i + " " + "\n");
 				for (int k=1; k<=12;i++){
-					grid+=("|" + print10spaces());
+					grid+=("|" + tenspaces);
 			}
 			
 		}
 	}
 		return firstline + grid;
 }
-	
-	public String print9spaces(){
-		return ("         ");
-	}
-
-	public String print3spaces(){
-		return ("   ");
-	}
-	public String print2spaces(){
-		return("  ");
-		
-	}
-	public String print10spaces(){
-		return("          ");
-	}
 }
+	
+	
