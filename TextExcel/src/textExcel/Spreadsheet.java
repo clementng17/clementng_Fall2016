@@ -6,12 +6,13 @@ public class Spreadsheet implements Grid
 {
 	int row;
 	int cols;
+	Cell [][] spreadsheet= new Cell[20][12];
 	
 	public void Spreasheet(int row, int cols){
 		
 		this.row= row;
 		this.cols= cols;
-		int [][] EmptyCellArray = new int[12][20];
+		int [][] EmptyCellArray =  new int[20][12];
 	}
 	
 	@Override
@@ -39,7 +40,10 @@ public class Spreadsheet implements Grid
 	@Override
 	public Cell getCell(Location loc)
 	{
-		return null;
+		row= loc.getRow();
+		cols= loc.getCol();
+		return spreadsheet [row][cols];
+		
 	}
 
 	@Override

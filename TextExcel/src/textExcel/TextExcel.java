@@ -10,7 +10,7 @@ public class TextExcel  {
 	public static void main(String[] args){
 	    // Add your command loop here
 		Spreadsheet table = new Spreadsheet(); 
-		table.getGridText();
+		System.out.print(table.getGridText());
 		Scanner input= new Scanner (System.in);
 		String command= input.nextLine();
 		while(!command.equals("quit")){
