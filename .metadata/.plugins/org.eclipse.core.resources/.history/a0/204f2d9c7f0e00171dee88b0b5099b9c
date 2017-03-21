@@ -19,6 +19,7 @@ public class TextExcel  {
 			table.processCommand(command);
 			command=input.nextLine();
 		}
+		
 	
 		
 	}

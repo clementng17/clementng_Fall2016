@@ -18,14 +18,7 @@ public class Spreadsheet implements Grid
 	@Override
 	public String processCommand(String command)
 	{
-		String [] arr1= command.split(" ",3);
 		return command;
-	}
-	
-	public String parseCell(String location){
-		
-		int colNumber = Character.toUpperCase(str.charAt(i)) - 'A';
-		
 	}
 	
 	
@@ -81,7 +74,7 @@ public class Spreadsheet implements Grid
 	}
 
 	@Override
-	public String getGridText()
+	public  String getGridText()
 	{
 		String alphabet= "ABCDEFGHIJKL";
 		//12 letters

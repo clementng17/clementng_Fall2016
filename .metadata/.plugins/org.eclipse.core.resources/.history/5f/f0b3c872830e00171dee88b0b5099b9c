@@ -18,14 +18,7 @@ public class Spreadsheet implements Grid
 	@Override
 	public String processCommand(String command)
 	{
-		String [] arr1= command.split(" ",3);
 		return command;
-	}
-	
-	public String parseCell(String location){
-		
-		int colNumber = Character.toUpperCase(str.charAt(i)) - 'A';
-		
 	}
 	
 	
@@ -111,7 +104,8 @@ public class Spreadsheet implements Grid
 			
 		}
 	}
-		return firstline + grid;
+		return "hi";
+		//return firstline + grid;
 	}
 }
 	
