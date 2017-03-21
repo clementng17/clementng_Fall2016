@@ -11,6 +11,8 @@ public class TextExcel  {
 	    // Add your command loop here
 		Spreadsheet table = new Spreadsheet(); 
 		System.out.print(table.getGridText());
+		TestsALL.Helper th = new TestsALL.Helper();
+        System.out.println(th.getText());
 		Scanner input= new Scanner (System.in);
 		String command= input.nextLine();
 		while(!command.equals("quit")){

@@ -21,10 +21,37 @@ public class Spreadsheet implements Grid
 		return command;
 	}
 	
-	public String cellInspect(){
+	
+	public void clearAll() {
+		Cell [][] spreadsheet1 =  spreadsheet;
+		for (int i=0; i<=19;i++){
+			for(int j=0; j<=11;j++){
+				spreadsheet1[i][j]= new EmptyCell();
+			}
+		}
 		
 	}
+	
+	public void clearCell(Location loc){
+		row=loc.getRow();
+		cols= loc.getCol();
+		spreadsheet[row][cols]= new EmptyCell();
+		
+	}
+	
+	public void setCell(Location loc, Cell input){
+		row=loc.getRow();
+		cols=loc.getCol();
+		spreadsheet[row][cols]= input;
+	}
+	
+	public Cell inspect(Location loc){
+		row=loc.getRow();
+		cols=loc.getCol();
+		return spreadsheet[row][cols];
+	}
 
+	
 	@Override
 	public int getRows()
 	{
@@ -50,11 +77,10 @@ public class Spreadsheet implements Grid
 	public  String getGridText()
 	{
 		String alphabet= "ABCDEFGHIJKL";
-		String firstline;
+		//12 letters
+		String firstline="";
 		String grid="";
-		String tenspaces="          ";
 		String ninespaces="         ";
-		//12
 		//first row 
 		firstline= ("   ");
 		for (int i=0; i<=11;i++){
@@ -65,19 +91,19 @@ public class Spreadsheet implements Grid
 			if (i<10){
 				grid+= (i + "  "+ "\n");
 				for (int j=1; j<=12;i++){
-					grid+=("|" + tenspaces);
+					grid+=("|" + spreadsheet[i][j].abbreviatedCellText());
 				}
 			}
 			if (i>=10){
 				grid+=(i + " " + "\n");
 				for (int k=1; k<=12;i++){
-					grid+=("|" + tenspaces);
+					grid+=("|" + spreadsheet[i][k].abbreviatedCellText());
 			}
 			
 		}
 	}
 		return firstline + grid;
-}
+	}
 }
 	
 	
