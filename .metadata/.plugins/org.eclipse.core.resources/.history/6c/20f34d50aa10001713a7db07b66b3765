@@ -6,7 +6,7 @@ public class Spreadsheet implements Grid
 {
 	int row;
 	int cols;
-	Cell [][] spreadsheet = new Cell[20][12];
+	Cell [][] spreadsheet= new Cell[20][12];
 	
 	public void Spreadsheet(int row, int cols){
 		
@@ -105,10 +105,10 @@ public class Spreadsheet implements Grid
 		String firstLine = ("   |A         |B         |C         |D         |E         |F         |G         |H         |I         |J         |K         |L         |") ;
 		firstLine += ("\n");
 				
-		for (int i=0; i<20; i++){
+		for (int i=0; i<=19; i++){
 			if (i<19){
 				grid+= ((i+1) + "  "+ "\n");
-				for (int j=1; j<12;i++){
+				for (int j=1; j<=12;i++){
 					grid+=("|" + spreadsheet[i][j].abbreviatedCellText());
 					// spreadsheet[i][j].abbreviatedCellText()
 				}
