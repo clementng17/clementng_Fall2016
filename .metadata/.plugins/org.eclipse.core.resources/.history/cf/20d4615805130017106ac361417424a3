@@ -94,6 +94,19 @@ public class Spreadsheet implements Grid
 	@Override
 	public String getGridText()
 	{
+		/*
+		String alphabet= "ABCDEFGHIJKL";
+		//12 letters
+		String firstline="";
+		String grid="";
+		String ninespaces="         ";
+		String tenspaces="          ";
+		firstline= ("   ");
+		for (int i=0; i<=11;i++){
+			firstline+=("|" + alphabet.charAt(i)+ ninespaces);
+		}
+		*/
+		
 		String grid="";
 		String firstLine = ("   |A         |B         |C         |D         |E         |F         |G         |H         |I         |J         |K         |L         ") ;
 		firstLine += ("\n");

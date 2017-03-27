@@ -6,13 +6,12 @@ public class Spreadsheet implements Grid
 {
 	int row;
 	int cols;
-	//Cell [][] spreadsheet = new Cell[20][12];
-	private Cell[][] spreadsheet;
-	public Spreadsheet(){
-		//Cell[][] spreadsheet = new Cell[20][12];
-		this.row= getRows();
-		this.cols= getCols();
-		spreadsheet= new Cell[20][12];
+	Cell [][] spreadsheet = new Cell[20][12];
+	
+	public void Spreadsheet(int row, int cols){
+		
+		this.row= row;
+		this.cols= cols;
 		for (int i = 0; i < 20; i++) {
 			for (int j = 0; j < 12; j++) {
 				spreadsheet[i][j] =  new EmptyCell();
@@ -94,25 +93,36 @@ public class Spreadsheet implements Grid
 	@Override
 	public String getGridText()
 	{
+		/*
+		String alphabet= "ABCDEFGHIJKL";
+		//12 letters
+		String firstline="";
 		String grid="";
-		String firstLine = ("   |A         |B         |C         |D         |E         |F         |G         |H         |I         |J         |K         |L         ") ;
+		String ninespaces="         ";
+		String tenspaces="          ";
+		firstline= ("   ");
+		for (int i=0; i<=11;i++){
+			firstline+=("|" + alphabet.charAt(i)+ ninespaces);
+		}
+		*/
+		
+		String grid="";
+		String firstLine = ("   |A         |B         |C         |D         |E         |F         |G         |H         |I         |J         |K         |L         |") ;
 		firstLine += ("\n");
 				
 		for (int i=0; i<20; i++){
-			if (i<9){
-				grid+= ((i+1) + "  ");
-				for (int j=0; j<=11;j++){
+			if (i<19){
+				grid+= ((i+1) + "  "+ "\n");
+				for (int j=1; j<12;j++){
 					grid+=("|" + spreadsheet[i][j].abbreviatedCellText());
 					// spreadsheet[i][j].abbreviatedCellText()
 				}
-				grid+="\n";
 			}
 			if (i>=9){
-				grid+=((i+1) + " ");
+				grid+=((i+1) + " " + "\n");
 				for (int k=0; k<=11;k++){
 					grid+=("|" + spreadsheet[i][k].abbreviatedCellText());
 			}
-			grid+= "\n";
 			
 		}
 	}

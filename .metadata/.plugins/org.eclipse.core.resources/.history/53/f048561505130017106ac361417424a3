@@ -94,8 +94,21 @@ public class Spreadsheet implements Grid
 	@Override
 	public String getGridText()
 	{
+		/*
+		String alphabet= "ABCDEFGHIJKL";
+		//12 letters
+		String firstline="";
 		String grid="";
-		String firstLine = ("   |A         |B         |C         |D         |E         |F         |G         |H         |I         |J         |K         |L         ") ;
+		String ninespaces="         ";
+		String tenspaces="          ";
+		firstline= ("   ");
+		for (int i=0; i<=11;i++){
+			firstline+=("|" + alphabet.charAt(i)+ ninespaces);
+		}
+		*/
+		
+		String grid="";
+		String firstLine = ("   |A         |B         |C         |D         |E         |F         |G         |H         |I         |J         |K         |L         |") ;
 		firstLine += ("\n");
 				
 		for (int i=0; i<20; i++){
@@ -108,11 +121,10 @@ public class Spreadsheet implements Grid
 				grid+="\n";
 			}
 			if (i>=9){
-				grid+=((i+1) + " ");
+				grid+=((i+1) + " " + "\n");
 				for (int k=0; k<=11;k++){
 					grid+=("|" + spreadsheet[i][k].abbreviatedCellText());
 			}
-			grid+= "\n";
 			
 		}
 	}
