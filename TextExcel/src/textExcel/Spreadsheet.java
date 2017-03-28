@@ -25,12 +25,38 @@ public class Spreadsheet implements Grid
 	public String processCommand(String command)
 	{
 		String [] arr1= command.split(" ",3);
-	    if (command== "clearAll"){
-	    	clearAll();
-	    	return "Cleared all spreadsheet";
+	    if (command ==""){
+	    	return "";
 	    }
+		
+		if  (arr1.length == 1){
+			if (command== "clear"){
+		    	clear();
+		    	return getGridText();
+		    }
+			else {
+				SpreadsheetLocation location= new SpreadsheetLocation(command);
+				return getCell(location).fullCellText(); 
+			}
+		}
+		
+		if (arr1.length ==2){
+			SpreadsheetLocation location= new SpreadsheetLocation(command);
+			clearCell(location);
+			return getGridText();
+		}
+		
+		if (arr1.length ==3){
+			if (arr1[1] == "="){
+				SpreadsheetLocation location= new SpreadsheetLocation(arr1[0]);
+				String input= arr1[2];
+				String newInput= input.substring(1, input.length()-1);
+				setCell(location,  new TextCell(newInput));
+				return getGridText();
+			}
+		}
 	
-		return command;
+		return getGridText();
 	}
 	/*
 	public String parseCell(String location){
@@ -40,7 +66,7 @@ public class Spreadsheet implements Grid
 	}
 	*/
 	
-	public void clearAll() {
+	public void clear() {
 		Cell [][] spreadsheet1 =  spreadsheet;
 		for (int i=0; i<=19;i++){
 			for(int j=0; j<=11;j++){
