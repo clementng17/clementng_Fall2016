@@ -22,42 +22,50 @@ public class Spreadsheet implements Grid
 	}
 	
 	@Override
-	public String processCommand(String command)
-	{
+	public String processCommand(String command) {
 	
 		
-		String [] arr1= command.split(" ",3);
+		String [] arr1= command.split(" ");
 	    if (command.equals("")){
 	    	return "";
 	    }
 		
-		if  (arr1.length == 1){
-			if (command.equalsIgnoreCase("clear")){
-		    	clear();
-		    	return getGridText();
-		    }
-			else if (!command.equalsIgnoreCase("clear")){
-				SpreadsheetLocation location= new SpreadsheetLocation(command);
-				return getCell(location).fullCellText(); 
-			}
+		
+		if (command.equalsIgnoreCase("clear")){
+		    clear();
+		    return getGridText();
+		 } else if (((arr1[1].length() <=3) && (arr1[1].length() > 0)) && (arr1[0].equalsIgnoreCase("clear"))){
+				SpreadsheetLocation location= new SpreadsheetLocation(arr1[1]);
+				clearCell(location);
+				return getGridText();
+		} else if (arr1[1].equals("=")){
+			SpreadsheetLocation location= new SpreadsheetLocation(arr1[0]);
+			String input= command.substring(command.indexOf("\""),command.length());
+			input= input.substring(1, input.length()-1);
+			setCell(location,  new TextCell(input));
+			return getGridText();
+		
+		}else{
+			SpreadsheetLocation location= new SpreadsheetLocation(command);
+			return getCell(location).fullCellText(); 
 		}
 		
-		if (arr1.length ==2 && arr1[0].equalsIgnoreCase("clear")){
-			SpreadsheetLocation location= new SpreadsheetLocation(arr1[1]);
-			clearCell(location);
-			return getGridText();
-		}
+//		
+//		if (arr1.length ==2 && arr1[0].equalsIgnoreCase("clear")){
+//			SpreadsheetLocation location= new SpreadsheetLocation(arr1[1]);
+//			clearCell(location);
+//			return getGridText();
+//		}
 		//arr1[1].equals("=")
-		if (arr1.length ==3 ){
-				SpreadsheetLocation location= new SpreadsheetLocation(arr1[0]);
-				String input= arr1[2];
-				String newInput= input.substring(1, input.length()-1);
-				setCell(location,  new TextCell(newInput));
-				return getGridText();
-			
-		}
+//		if (arr1.length ==3 ){
+//				SpreadsheetLocation location= new SpreadsheetLocation(arr1[0]);
+//				String input= arr1[2];
+//				String newInput= input.substring(1, input.length()-1);
+//				setCell(location,  new TextCell(newInput));
+//				return getGridText();
+//			
+//		}
 	
-		return getGridText();
 		
 	}
 	/*

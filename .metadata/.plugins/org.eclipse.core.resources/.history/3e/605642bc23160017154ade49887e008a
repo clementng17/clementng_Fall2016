@@ -10,18 +10,16 @@ public class TextCell implements Cell{
 
 	@Override
 	public String abbreviatedCellText() {
-		//if (input.substring(0,1).equals("\"") && input.indexOf(input.length()-1).equals(""){
-		String text = input.substring(0, input.length()-2); 
+		//if (input.substring(0,1).equals("\"") && input.substring(input.length()-1, input.length()).equals("\"")){
+		String text = input.substring(1, input.length()-1); 
 			if (text.equals("")){
 				return ("          ");
 			}
 			else if (text.length() > 10) {
-				text = input.substring(0, input.length()-2); 
 				return text.substring(0, 10); 
 			} 
 			else if (text.length() < 10) {
-				text = input.substring(0, input.length());
-				while(text.length()<10){
+				for(int i=1; i+text.length()<=10;i++){
 					text += " ";
 				}
 				return text;

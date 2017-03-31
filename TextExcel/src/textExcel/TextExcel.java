@@ -18,6 +18,14 @@ public class TextExcel  {
 		Scanner input= new Scanner (System.in);
 		String command= input.nextLine();
 		while(!command.equals("quit")){
+			try { 
+				System.out.print(table.processCommand(command));
+			} catch (NumberFormatException e){
+				System.out.println("Not a valid input value");
+
+			} catch (IndexOutOfBoundsException e){
+				System.out.println("Not a valid input value");
+			}
 			table.processCommand(command);
 			command=input.nextLine();
 		}

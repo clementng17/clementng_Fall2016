@@ -21,7 +21,7 @@ public class TextCell implements Cell{
 			} 
 			else if (text.length() < 10) {
 				text = input.substring(0, input.length());
-				while(text.length()<10){
+				for(int i=1; i+text.length()-4<=10;i++){
 					text += " ";
 				}
 				return text;
