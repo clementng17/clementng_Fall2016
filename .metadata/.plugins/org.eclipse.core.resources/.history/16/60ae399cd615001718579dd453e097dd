@@ -9,18 +9,18 @@ public class TextExcel  {
 
 	public static void main(String[] args){
 	    // Add your command loop here
-		System.out.print("hi");
-		/*Spreadsheet table = new Spreadsheet(); 
+		//	TestsALL.Helper th = new TestsALL.Helper();
+       // System.out.println(th.getText());
+		Spreadsheet table = new Spreadsheet(); 
+		//System.out.println(table[1][1].abbreviatedCellText());
 		System.out.print(table.getGridText());
-		TestsALL.Helper th = new TestsALL.Helper();
-        System.out.println(th.getText());
+		
 		Scanner input= new Scanner (System.in);
 		String command= input.nextLine();
 		while(!command.equals("quit")){
 			table.processCommand(command);
 			command=input.nextLine();
-		}*/
-		
+		}
 	
 		
 	}

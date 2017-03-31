@@ -1,0 +1,21 @@
+package textExcel;
+
+public class TextCell implements Cell{
+	
+	private String input; 
+
+	public TextCell(String value){
+		input=value; 
+	}
+
+	@Override
+	public String abbreviatedCellText() {
+		return "          ";
+	}
+
+	@Override
+	public String fullCellText() {
+		return ("\"" + input + "\"");
+	}
+
+}

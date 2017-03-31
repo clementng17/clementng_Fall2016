@@ -24,39 +24,41 @@ public class Spreadsheet implements Grid
 	@Override
 	public String processCommand(String command)
 	{
+	
+		
 		String [] arr1= command.split(" ",3);
-	    if (command ==""){
+	    if (command.equals("")){
 	    	return "";
 	    }
 		
 		if  (arr1.length == 1){
-			if (command== "clear"){
+			if (command.equalsIgnoreCase("clear")){
 		    	clear();
 		    	return getGridText();
 		    }
-			else {
+			else if (!command.equalsIgnoreCase("clear")){
 				SpreadsheetLocation location= new SpreadsheetLocation(command);
 				return getCell(location).fullCellText(); 
 			}
 		}
 		
-		if (arr1.length ==2){
-			SpreadsheetLocation location= new SpreadsheetLocation(command);
+		if (arr1.length ==2 && arr1[0].equalsIgnoreCase("clear")){
+			SpreadsheetLocation location= new SpreadsheetLocation(arr1[1]);
 			clearCell(location);
 			return getGridText();
 		}
-		
-		if (arr1.length ==3){
-			if (arr1[1] == "="){
+		//arr1[1].equals("=")
+		if (arr1.length ==3 ){
 				SpreadsheetLocation location= new SpreadsheetLocation(arr1[0]);
 				String input= arr1[2];
 				String newInput= input.substring(1, input.length()-1);
 				setCell(location,  new TextCell(newInput));
 				return getGridText();
-			}
+			
 		}
 	
 		return getGridText();
+		
 	}
 	/*
 	public String parseCell(String location){
@@ -89,13 +91,6 @@ public class Spreadsheet implements Grid
 		spreadsheet[row][cols]= input;
 	}
 	
-	public Cell inspect(Location loc){
-		row=loc.getRow();
-		cols=loc.getCol();
-		return spreadsheet[row][cols];
-	}
-
-	
 	@Override
 	public int getRows()
 	{
@@ -121,22 +116,22 @@ public class Spreadsheet implements Grid
 	public String getGridText()
 	{
 		String grid="";
-		String firstLine = ("   |A         |B         |C         |D         |E         |F         |G         |H         |I         |J         |K         |L         ") ;
+		String firstLine = ("   |A         |B         |C         |D         |E         |F         |G         |H         |I         |J         |K         |L         |") ;
 		firstLine += ("\n");
 				
 		for (int i=0; i<20; i++){
 			if (i<9){
-				grid+= ((i+1) + "  ");
+				grid+= ((i+1) + "  " + "|");
 				for (int j=0; j<=11;j++){
-					grid+=("|" + spreadsheet[i][j].abbreviatedCellText());
+					grid+=(spreadsheet[i][j].abbreviatedCellText() + "|");
 					// spreadsheet[i][j].abbreviatedCellText()
 				}
 				grid+="\n";
 			}
 			if (i>=9){
-				grid+=((i+1) + " ");
+				grid+=((i+1) + " " + "|");
 				for (int k=0; k<=11;k++){
-					grid+=("|" + spreadsheet[i][k].abbreviatedCellText());
+					grid+=(spreadsheet[i][k].abbreviatedCellText() + "|");
 			}
 			grid+= "\n";
 			

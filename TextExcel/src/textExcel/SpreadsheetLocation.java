@@ -10,7 +10,7 @@ public class SpreadsheetLocation implements Location
 	
 	 public SpreadsheetLocation(String cell)
 	    {
-	    	cellName= cell;
+	    	cellName= cell.toUpperCase();
 	    }
 	  
     @Override
@@ -23,6 +23,7 @@ public class SpreadsheetLocation implements Location
     @Override
     public int getCol()
     {
+    
     	String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     	for (int i =0; i <26;i++){
 	   		 if  (cellName.charAt(0) == alphabet.charAt(i)){
@@ -30,6 +31,12 @@ public class SpreadsheetLocation implements Location
 	   		 }
     	}
     	return cols;
+    	
+    	/*
+    	int column;
+    	column=cols-65;
+    	return column;
+    	*/
     }
     
 }
