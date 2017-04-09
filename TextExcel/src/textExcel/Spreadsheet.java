@@ -23,18 +23,20 @@ public class Spreadsheet implements Grid
 	
 	@Override
 	public String processCommand(String command) {
-	
 		
 		String [] arr1= command.split(" ");
 	    if (command.equals("")){
 	    	return "";
 	    }
-		
-		
+	    
 		if (command.equalsIgnoreCase("clear")){
 		    clear();
 		    return getGridText();
-		 } else if (((arr1[1].length() <=3) && (arr1[1].length() > 0)) && (arr1[0].equalsIgnoreCase("clear"))){
+		} else if (!command.equalsIgnoreCase("clear") && arr1.length==1) {
+			SpreadsheetLocation location= new SpreadsheetLocation(command);
+			return getCell(location).fullCellText(); 
+			
+		} else if (((arr1[1].length() <=3) && (arr1[1].length() > 0)) && (arr1[0].equalsIgnoreCase("clear"))){
 				SpreadsheetLocation location= new SpreadsheetLocation(arr1[1]);
 				clearCell(location);
 				return getGridText();
@@ -45,7 +47,7 @@ public class Spreadsheet implements Grid
 			setCell(location,  new TextCell(input));
 			return getGridText();
 		
-		}else{
+		} else{
 			SpreadsheetLocation location= new SpreadsheetLocation(command);
 			return getCell(location).fullCellText(); 
 		}
