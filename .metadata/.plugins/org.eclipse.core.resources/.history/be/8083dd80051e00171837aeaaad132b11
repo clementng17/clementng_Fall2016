@@ -1,0 +1,13 @@
+package textExcel;
+
+public class FormulaCell extends RealCell {
+
+	public FormulaCell() {
+		
+	}
+	@Override
+	public double getDoubleValue(){
+		
+	}
+
+}

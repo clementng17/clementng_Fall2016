@@ -40,11 +40,15 @@ public class Spreadsheet implements Grid
 				SpreadsheetLocation location= new SpreadsheetLocation(arr1[1]);
 				clearCell(location);
 				return getGridText();
+				
 		} else if (arr1[1].equals("=")){
 			SpreadsheetLocation location= new SpreadsheetLocation(arr1[0]);
+			row=location.getRow();
+			cols=location.getCol();
 			String input= command.substring(command.indexOf("\""),command.length());
 			input= input.substring(1, input.length()-1);
-			setCell(location,  new TextCell(input));
+			//setCell(location,  new TextCell(input));
+			spreadsheet [row][cols]= new TextCell(input);
 			return getGridText();
 		
 		} else{
@@ -100,6 +104,7 @@ public class Spreadsheet implements Grid
 		cols=loc.getCol();
 		spreadsheet[row][cols]= input;
 	}
+	
 	
 	@Override
 	public int getRows()
