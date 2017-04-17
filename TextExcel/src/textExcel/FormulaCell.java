@@ -6,6 +6,7 @@ public class FormulaCell extends RealCell {
 		super(input);
 	}
 	
+	/*
 	@Override
 	public double getDoubleValue(){
 		String [ ] formula= input.split(" ");
@@ -22,5 +23,6 @@ public class FormulaCell extends RealCell {
 	@Override
 	public String fullCellText() {
 	}
+	*/
 
 }

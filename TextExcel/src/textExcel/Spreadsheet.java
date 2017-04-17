@@ -24,23 +24,26 @@ public class Spreadsheet implements Grid
 	@Override
 	public String processCommand(String command) {
 		
+		//returns nothing if no value is entered 
 		String [] arr1= command.split(" ");
 	    if (command.equals("")){
 	    	return "";
 	    }
 	    
+	    //clears the entire grid and returns it 
 		if (command.equalsIgnoreCase("clear")){
 		    clear();
 		    return getGridText();
+		//returns the contents of one specific cell 
 		} else if (!command.equalsIgnoreCase("clear") && arr1.length==1) {
 			SpreadsheetLocation location= new SpreadsheetLocation(command);
 			return getCell(location).fullCellText(); 
-			
+			//clears one specific cell and returns the entire grid
 		} else if (((arr1[1].length() <=3) && (arr1[1].length() > 0)) && (arr1[0].equalsIgnoreCase("clear"))){
 				SpreadsheetLocation location= new SpreadsheetLocation(arr1[1]);
 				clearCell(location);
 				return getGridText();
-				
+		//sets the contents of a cell and returns the entire grid 
 		} else if (arr1[1].equals("=")){
 			SpreadsheetLocation location= new SpreadsheetLocation(arr1[0]);
 			row=location.getRow();
@@ -82,6 +85,7 @@ public class Spreadsheet implements Grid
 	}
 	*/
 	
+	//clear the contents of the entire cell
 	public void clear() {
 		Cell [][] spreadsheet1 =  spreadsheet;
 		for (int i=0; i<=19;i++){
@@ -91,7 +95,7 @@ public class Spreadsheet implements Grid
 		}
 		
 	}
-	
+	//clears the content of a cell 
 	public void clearCell(Location loc){
 		row=loc.getRow();
 		cols= loc.getCol();
@@ -99,25 +103,28 @@ public class Spreadsheet implements Grid
 		
 	}
 	
+	//sets the value of a cell
 	public void setCell(Location loc, Cell input){
 		row=loc.getRow();
 		cols=loc.getCol();
 		spreadsheet[row][cols]= input;
 	}
 	
-	
+	//returns the number of rows
 	@Override
 	public int getRows()
 	{
 		return 20;
 	}
 
+	//returns number of columns 
 	@Override
 	public int getCols()
 	{
 		return 12;
 	}
 
+	//this method gets the value of a cell 
 	@Override
 	public Cell getCell(Location loc)
 	{
@@ -126,7 +133,7 @@ public class Spreadsheet implements Grid
 		return spreadsheet [row][cols];
 		
 	}
-
+	//creates a the spreadsheet
 	@Override
 	public String getGridText()
 	{
