@@ -10,7 +10,15 @@ public class RealCell implements Cell {
 	
 	@Override
 	public String abbreviatedCellText() {
-		String Truncatedtext= input + "          ";
+		
+		
+//		if (input.indexOf(".")<0){
+//			input = input + ".0";
+//	}
+		double input2;
+		input2= Double.parseDouble(input);
+		
+		String Truncatedtext= input2 + "          ";
 		return Truncatedtext.substring(0,10);
 	}
 

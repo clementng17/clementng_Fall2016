@@ -44,7 +44,8 @@ public class Spreadsheet implements Grid
 				clearCell(location);
 				return getGridText();
 		//sets the contents of a cell and returns the entire grid 
-		} else if (arr1[1].equals("=") && !command.contains("%")){
+		
+		} else if (arr1[1].equals("=") && arr1[2].substring(0,1).equals("\"")){
 			SpreadsheetLocation location= new SpreadsheetLocation(arr1[0]);
 			row=location.getRow();
 			cols=location.getCol();

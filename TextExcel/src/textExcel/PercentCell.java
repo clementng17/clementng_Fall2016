@@ -2,17 +2,30 @@ package textExcel;
 
 public class PercentCell extends RealCell{
 
+	private String input;
 	
-	public PercentCell(String input) {
-		super(input);
+	public PercentCell(String value) {
+		super(value);
 	}
 	
+
 	@Override
 	public String abbreviatedCellText() {
-		String percentage= super.getDoubleValue() + "%";
-		percentage += "          ";
-		return percentage.substring(0,10);
-	}
+		
+		String store = (int)(getDoubleValue()) + "";
+//		if ((input.indexOf(1)+ "").equals(".")){
+//			return input.indexOf(0) + "%";
+//		}
+		if (store.length()>9){
+//		String percentage= super.getDoubleValue() + "%";
+//		percentage += "          ";
+		return store.substring(0,10) + "%";
+		}
+		else { 
+			store+= "%          ";
+			return store.substring(0,10);
+		}
+}
 
 	@Override
 	public double getDoubleValue(){
