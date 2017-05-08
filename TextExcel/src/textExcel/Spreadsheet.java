@@ -25,7 +25,7 @@ public class Spreadsheet implements Grid
 	public String processCommand(String command) {
 		
 		//returns nothing if no value is entered 
-		String [] arr1= command.split(" ");
+		String [] arr1= command.split(" ", 3);
 	    if (command.equals("")){
 	    	return "";
 	    }
@@ -44,7 +44,14 @@ public class Spreadsheet implements Grid
 				clearCell(location);
 				return getGridText();
 		//sets the contents of a cell and returns the entire grid 
-		
+		}
+		 else if (arr1[2].contains("(")) {
+			SpreadsheetLocation location= new SpreadsheetLocation(arr1[0]);
+			row=location.getRow();
+			cols=location.getCol();
+			spreadsheet [row][cols]= new FormulaCell(arr1[2], spreadsheet);
+			return getGridText();
+			
 		} else if (arr1[1].equals("=") && arr1[2].substring(0,1).equals("\"")){
 			SpreadsheetLocation location= new SpreadsheetLocation(arr1[0]);
 			row=location.getRow();
@@ -59,13 +66,6 @@ public class Spreadsheet implements Grid
 			row=location.getRow();
 			cols=location.getCol();
 			spreadsheet [row][cols]= new PercentCell(arr1[2]);
-			return getGridText();
-
-		} else if (arr1[2].substring(0,1) == "(") {
-			SpreadsheetLocation location= new SpreadsheetLocation(arr1[0]);
-			row=location.getRow();
-			cols=location.getCol();
-			spreadsheet [row][cols]= new FormulaCell(arr1[2]);
 			return getGridText();
 
 		} else if (!arr1[2].contains("%")){

@@ -1,0 +1,53 @@
+package textExcel;
+
+public class FormulaCell extends RealCell {
+
+	private String input;
+	
+	public FormulaCell(String value) {
+		super(value);
+	}
+	
+	
+	
+	
+	@Override
+	public double getDoubleValue(){
+		String [ ] formula= input.substring(2,input.length()).split(" ");
+		double result=Double.parseDouble(formula[0]);
+	
+			for (int i=1; i<formula.length;i+=2 ){
+				if (formula[i].equals("+")){
+					result+=  Double.parseDouble(formula[i+1]);
+			}
+				if (formula[i].equals("-")){
+					result-=  Double.parseDouble(formula[i+1]);
+				}
+				if (formula[i].equals("*")){
+					result*=  Double.parseDouble(formula[i+1]);
+				}
+				if (formula[i].equals("/")){
+					result/=  Double.parseDouble(formula[i+1]);
+
+				}
+			
+		}
+		return result;
+		
+		
+	}
+	
+	@Override
+	public String abbreviatedCellText() {
+		String Truncatedtext= getDoubleValue() + "          ";
+		return Truncatedtext.substring(0,10);
+		
+	}
+	
+	@Override
+	public String fullCellText() {
+		return super.fullCellText();
+	}
+	
+
+}
