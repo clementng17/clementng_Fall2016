@@ -21,11 +21,6 @@ public class FormulaCell extends RealCell {
 	        if (formula[0].contains("SUM")){
 	        	return getSum(formula[1]);
 	        }
-	        
-	        if (formula[0].contains("AVG")){
-	        	return getAvg(formula[1]);
-	        }
-	        		
 			for (int i=1; i<formula.length;i+=2 ){
 				if (formula[i].equals("+")){
 					result+=  Double.parseDouble(formula[i+1]);
