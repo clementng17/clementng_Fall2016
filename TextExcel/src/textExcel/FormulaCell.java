@@ -35,7 +35,14 @@ public class FormulaCell extends RealCell {
 			
 		}
 		return result;
-		
+	}
+	
+	public double getSum(String input){
+		String [] store = input.split("-"); 
+		double sum=0;
+		SpreadsheetLocation first = new SpreadsheetLocation(store[0]); 
+		SpreadsheetLocation end = new SpreadsheetLocation(store[1]); 
+		for (char i= first.indexOf(0); i<  )
 		
 	}
 	
