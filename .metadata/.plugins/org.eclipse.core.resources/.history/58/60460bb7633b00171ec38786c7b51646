@@ -89,7 +89,7 @@ public class FormulaCell extends RealCell {
 		SpreadsheetLocation first = new SpreadsheetLocation(store[0]); 
 		SpreadsheetLocation end = new SpreadsheetLocation(store[1]); 
 		double avg= getSum(input);
-		avg /= ((end.getRow()-first.getRow())*(end.getCol()-first.getCol()));
+		avg /= (end.getRow()-first.getRow())*(end.getCol()-first.getCol());
 		return avg; 
 	}
 	@Override

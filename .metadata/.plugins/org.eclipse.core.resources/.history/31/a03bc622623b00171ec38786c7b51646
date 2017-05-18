@@ -24,9 +24,9 @@ public class FormulaCell extends RealCell {
 	        	return getAvg(formula[1]);
 	        }
 	        
+	        
 			double result=Double.parseDouble(formula[0]);
-
-	        		
+	
 			for (int i=1; i<formula.length;i+=2 ){
 				if (formula[i].equals("+")){
 					if (formula[i+1].toUpperCase().charAt(0)>64 &&formula[i+1].toUpperCase().charAt(0)<77){
@@ -89,7 +89,7 @@ public class FormulaCell extends RealCell {
 		SpreadsheetLocation first = new SpreadsheetLocation(store[0]); 
 		SpreadsheetLocation end = new SpreadsheetLocation(store[1]); 
 		double avg= getSum(input);
-		avg /= ((end.getRow()-first.getRow())*(end.getCol()-first.getCol()));
+		avg /= (end.getRow()-first.getRow())*(end.getCol()-first.getCol());
 		return avg; 
 	}
 	@Override

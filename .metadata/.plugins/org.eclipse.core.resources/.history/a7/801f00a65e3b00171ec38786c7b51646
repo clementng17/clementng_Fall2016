@@ -9,62 +9,38 @@ public class FormulaCell extends RealCell {
 		super(value);
 		input= value;
 		spreadsheet = spreadsheetInput;
+		
 	}
 	
 	@Override
 	public double getDoubleValue(){
 		//separates the components of the formula 
 		String [ ] formula = input.substring(2, input.length()-2).split(" ");
+		double result=Double.parseDouble(formula[0]);
 	
-	        if (formula[0].toUpperCase().equals("SUM")){
+	        if (formula[0].contains("SUM")){
 	        	return getSum(formula[1]);
 	        }
 	        
-	        if (formula[0].toUpperCase().equals("AVG")){
+	        if (formula[0].contains("AVG")){
 	        	return getAvg(formula[1]);
 	        }
-	        
-			double result=Double.parseDouble(formula[0]);
-
 	        		
 			for (int i=1; i<formula.length;i+=2 ){
 				if (formula[i].equals("+")){
-					if (formula[i+1].toUpperCase().charAt(0)>64 &&formula[i+1].toUpperCase().charAt(0)<77){
-						SpreadsheetLocation location= new SpreadsheetLocation (formula[i+1].toUpperCase());
-						result += ((RealCell)(spreadsheet[location.getRow()][location.getCol()])).getDoubleValue();
-					}
-					else {
-						result+=  Double.parseDouble(formula[i+1]);
-					}
+					result+=  Double.parseDouble(formula[i+1]);
 			}
 				if (formula[i].equals("-")){
-					if (formula[i+1].toUpperCase().charAt(0)>64 &&formula[i+1].toUpperCase().charAt(0)<77){
-						SpreadsheetLocation location= new SpreadsheetLocation (formula[i+1].toUpperCase());
-						result -= ((RealCell)(spreadsheet[location.getRow()][location.getCol()])).getDoubleValue();
-					}
-					else {
-						result-=  Double.parseDouble(formula[i+1]);
-					}
+					result-=  Double.parseDouble(formula[i+1]);
 				}
 				if (formula[i].equals("*")){
-					if (formula[i+1].toUpperCase().charAt(0)>64 &&formula[i+1].toUpperCase().charAt(0)<77){
-						SpreadsheetLocation location= new SpreadsheetLocation (formula[i+1].toUpperCase());
-						result *= ((RealCell)(spreadsheet[location.getRow()][location.getCol()])).getDoubleValue();
-					}
-					else {
 					result*=  Double.parseDouble(formula[i+1]);
-					}
 				}
 				if (formula[i].equals("/")){
-					if (formula[i+1].toUpperCase().charAt(0)>64 &&formula[i+1].toUpperCase().charAt(0)<77){
-						SpreadsheetLocation location= new SpreadsheetLocation (formula[i+1].toUpperCase());
-						result /= ((RealCell)(spreadsheet[location.getRow()][location.getCol()])).getDoubleValue();
-					}
-					else {
-				
 					result/=  Double.parseDouble(formula[i+1]);
-					}
-				}	
+
+				}
+			
 		}
 		return result;
 	}
@@ -89,7 +65,7 @@ public class FormulaCell extends RealCell {
 		SpreadsheetLocation first = new SpreadsheetLocation(store[0]); 
 		SpreadsheetLocation end = new SpreadsheetLocation(store[1]); 
 		double avg= getSum(input);
-		avg /= ((end.getRow()-first.getRow())*(end.getCol()-first.getCol()));
+		avg /= (end.getRow()-first.getRow())*(end.getCol()-first.getCol());
 		return avg; 
 	}
 	@Override
