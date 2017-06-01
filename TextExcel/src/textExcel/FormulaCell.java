@@ -25,7 +25,6 @@ public class FormulaCell extends RealCell {
 	        }
 	        
 			double result=Double.parseDouble(formula[0]);
-
 	        		
 			for (int i=1; i<formula.length;i+=2 ){
 				if (formula[i].equals("+")){
@@ -96,13 +95,10 @@ public class FormulaCell extends RealCell {
 	public String abbreviatedCellText() {
 		String Truncatedtext= getDoubleValue() + "          ";
 		return Truncatedtext.substring(0,10);
-		
 	}
 	
 	@Override
 	public String fullCellText() {
 		return super.fullCellText();
 	}
-	
-
 }
