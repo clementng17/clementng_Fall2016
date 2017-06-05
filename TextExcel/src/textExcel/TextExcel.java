@@ -9,11 +9,8 @@ public class TextExcel  {
 
 	public static void main(String[] args){
 	    // Add your command loop here
-		//TestsALL.Helper th = new TestsALL.Helper();
-        //System.out.println(th.getText());
+;
 		Spreadsheet table = new Spreadsheet(); 
-		//System.out.println(table[1][1].abbreviatedCellText());
-		//System.out.print(table.getGridText());
 		
 		Scanner input= new Scanner (System.in);
 		String command= input.nextLine();
@@ -26,6 +23,7 @@ public class TextExcel  {
 			} catch (IndexOutOfBoundsException e){
 				System.out.println("Not a valid input value");
 			}
+			//catches exceptions 
 			table.processCommand(command);
 			command=input.nextLine();
 		}

@@ -9,12 +9,10 @@ public class RealCell implements Cell {
 	}
 	
 	@Override
+	//truncates cell
 	public String abbreviatedCellText() {
 		
-		
-//		if (input.indexOf(".")<0){
-//			input = input + ".0";
-//	}
+
 		double input2;
 		input2= Double.parseDouble(input);
 		
@@ -26,6 +24,8 @@ public class RealCell implements Cell {
 	public String fullCellText() {
 		return input;
 	}
+	
+	//changes input into a double
 	public double getDoubleValue(){
 		return Double.parseDouble(input);
 	}

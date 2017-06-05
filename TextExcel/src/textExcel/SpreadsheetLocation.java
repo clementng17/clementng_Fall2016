@@ -12,7 +12,8 @@ public class SpreadsheetLocation implements Location
 	    {
 	    	cellName= cell.toUpperCase();
 	    }
-	  
+	
+	 //returns row in zero-based index
     @Override
     public int getRow()
     {
@@ -20,6 +21,7 @@ public class SpreadsheetLocation implements Location
         return (row-1);
     }
     
+    //changes column letter into number
     @Override
     public int getCol()
     {
@@ -31,12 +33,5 @@ public class SpreadsheetLocation implements Location
 	   		 }
     	}
     	return cols;
-    	
-    	/*
-    	int column;
-    	column=cols-65;
-    	return column;
-    	*/
     }
-    
 }
